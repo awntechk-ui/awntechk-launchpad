@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,13 +10,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
-              </div>
-              <span className="text-xl font-bold">
-                Awntech<span className="text-primary-foreground opacity-70">K</span>
-              </span>
+            <div className="mb-6">
+              <img 
+                src={logo} 
+                alt="AwnTechK Logo" 
+                className="h-10 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-white/60 max-w-sm leading-relaxed mb-6">
               Building practical, scalable digital solutions with strong
@@ -79,7 +79,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-sm">
-            © {currentYear} AwntechK. All rights reserved.
+            © {currentYear} AwnTechK. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#privacy" className="text-white/40 hover:text-white/60 text-sm transition-colors">
