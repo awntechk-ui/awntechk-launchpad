@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,13 +32,12 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-custom-sm group-hover:shadow-custom-md transition-shadow duration-300">
-              <span className="text-primary-foreground font-bold text-lg">A</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">
-              Awntech<span className="text-gradient">K</span>
-            </span>
+          <a href="#" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="AwnTechK Logo" 
+              className="h-10 md:h-12 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}
