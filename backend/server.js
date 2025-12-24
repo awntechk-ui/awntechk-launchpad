@@ -6,7 +6,12 @@ dotenv.config();
 const app = express();
 app.use(express.json()); // ✅ parse JSON body
 const cors = require("cors");
-app.use(cors());
+
+app.use(cors({
+  origin: "https://awntechk-launchpad.vercel.app",  // ✅ Replace with your actual Vercel URL
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 
 // ✅ Keep your Gmail transporter, but add SendGrid transporter as well
 // Configure transporter (SendGrid)
@@ -30,7 +35,10 @@ app.post("/api/contact", async (req, res) => {
     // ✅ Use SendGrid transporter here
     await sendgridTransporter.sendMail({
       // IMPORTANT: Replace with the exact verified sender email from SendGrid
-      from: `"${name}" <${process.env.SENDGRID_VERIFIED_SENDER}>`, 
+      from: {
+        name: name,
+        address: process.env.SENDGRID_VERIFIED_SENDER
+      },
       replyTo: email,
       to: process.env.MAIL_TO,
       subject: `Contact: ${topic || "General"} from ${name}`,
@@ -49,6 +57,11 @@ app.post("/api/contact", async (req, res) => {
     console.error("Email error:", err); // ✅ log actual error
     return res.status(500).json({ error: err.message || "Failed to send message." });
   }
+});
+
+// ✅ Health check route for Render
+app.get("/", (req, res) => {
+  res.send("Backend is running on Render");
 });
 
 // Start server
