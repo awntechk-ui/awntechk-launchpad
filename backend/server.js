@@ -8,7 +8,9 @@ app.use(express.json()); // ✅ parse JSON body
 const cors = require("cors");
 
 app.use(cors({
-  origin: "https://awntechk-launchpad.vercel.app",  // ✅ Replace with your actual Vercel URL
+  origin: [
+    "https://awntechk-launchpad.vercel.app"
+  ],
   methods: ["GET", "POST"],
   credentials: true
 }));
