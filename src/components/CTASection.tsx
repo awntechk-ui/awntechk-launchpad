@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-const CTASection = () => {
+const CTASection = ({ onOpenContact }) => {
   return (
     <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
       {/* Background */}
@@ -41,13 +41,8 @@ const CTASection = () => {
             we're here to help you succeed.
           </p>
 
-          <Button
-            variant="secondary"
-            size="xl"
-            className="bg-white text-primary hover:bg-white/90 shadow-custom-lg hover:shadow-glow group"
-          >
-            Let's Talk
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <Button variant="hero" onClick={() => onOpenContact("Partnership")}>
+              Let’s Talk
           </Button>
         </div>
       </div>

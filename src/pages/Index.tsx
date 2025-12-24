@@ -5,17 +5,17 @@ import AboutSection from "@/components/AboutSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
-const Index = () => {
+const Index = ({ onOpenContact }) => {   
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header onOpenContact={onOpenContact} />   
       <main>
-        <HeroSection />
+        <HeroSection onOpenContact={onOpenContact} />  
         <ServicesSection />
         <AboutSection />
-        <CTASection />
+        <CTASection onOpenContact={onOpenContact}/>
       </main>
-      <Footer />
+      <Footer/>   
     </div>
   );
 };

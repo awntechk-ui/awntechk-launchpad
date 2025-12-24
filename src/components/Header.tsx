@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
-const Header = () => {
+const Header = ({ onOpenContact }) => {   // ✅ accept the prop
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -51,7 +51,7 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="hero" size="sm">
+           <Button variant="hero" size="sm" onClick={() => onOpenContact("Project Inquiry")}>
               Get Started
             </Button>
           </div>
@@ -84,9 +84,9 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="hero" className="mt-2">
-                Get Started
-              </Button>
+              <Button variant="hero" className="mt-2" onClick={() => onOpenContact("Project Inquiry")}>
+                  Get Started
+                </Button>
             </div>
           </div>
         )}

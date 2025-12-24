@@ -1,8 +1,13 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
 
-const HeroSection = () => {
+type HeroSectionProps = {
+  onOpenContact: (topic?: string) => void; // 👉 add prop
+};
+
+const HeroSection = ({ onOpenContact }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
       {/* Background gradient */}
@@ -13,7 +18,10 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8 opacity-0 animate-fade-in-left" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
+          <div
+            className="space-y-8 opacity-0 animate-fade-in-left"
+            style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent border border-primary/10">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse-soft" />
               <span className="text-sm font-medium text-accent-foreground">
@@ -32,36 +40,55 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button variant="hero" size="lg" className="group">
+              <Button
+                variant="hero"
+                size="lg"
+                className="group"
+                onClick={() => onOpenContact("Project Inquiry")} // 👉 enable Get Started
+              >
                 Get Started
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="heroOutline" size="lg">
+              <Button
+                variant="heroOutline"
+                size="lg"
+                onClick={() => onOpenContact("Support Request")} // 👉 enable Contact Us
+              >
                 Contact Us
               </Button>
+              
             </div>
 
             {/* Trust indicators */}
             <div className="flex items-center gap-8 pt-8 border-t border-border/50">
               <div className="text-center">
                 <div className="text-2xl font-bold text-foreground">50+</div>
-                <div className="text-sm text-muted-foreground">Projects Delivered</div>
+                <div className="text-sm text-muted-foreground">
+                  Projects Delivered
+                </div>
               </div>
               <div className="w-px h-12 bg-border" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-foreground">99%</div>
-                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                <div className="text-sm text-muted-foreground">
+                  Client Satisfaction
+                </div>
               </div>
               <div className="w-px h-12 bg-border hidden sm:block" />
               <div className="text-center hidden sm:block">
                 <div className="text-2xl font-bold text-foreground">24/7</div>
-                <div className="text-sm text-muted-foreground">Support Available</div>
+                <div className="text-sm text-muted-foreground">
+                  Support Available
+                </div>
               </div>
             </div>
           </div>
 
           {/* Right Column - Illustration */}
-          <div className="relative opacity-0 animate-fade-in-right" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
+          <div
+            className="relative opacity-0 animate-fade-in-right"
+            style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+          >
             <div className="relative">
               {/* Floating elements */}
               <div className="absolute -top-8 -left-8 w-24 h-24 rounded-2xl bg-accent shadow-custom-md animate-float flex items-center justify-center">
