@@ -1,65 +1,54 @@
 const express = require("express");
-const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
+const cors = require("cors");
+const sgMail = require("@sendgrid/mail");
 
 dotenv.config();
 const app = express();
-app.use(express.json()); // ✅ parse JSON body
-const cors = require("cors");
-app.use(cors());
-const allowedOrigins = [
-  "http://localhost:5173",                  // local dev
-  "https://awntechk-launchpad.vercel.app"   // production Vercel
-];
 
+// Set SendGrid API Key
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// ✅ Keep your Gmail transporter, but add SendGrid transporter as well
-// Configure transporter (SendGrid)
-const sendgridTransporter = nodemailer.createTransport({
-  service: "SendGrid",
-  auth: {
-    user: "apikey", // literally the word "apikey"
-    pass: process.env.SENDGRID_API_KEY,
-  },
-});
+// Middleware
+app.use(express.json());
+app.use(
+  cors({
+    origin: [
+      "https://awntechk-launchpad.vercel.app", // frontend deployed
+      "http://localhost:5173", // local dev
+    ],
+    methods: ["GET", "POST"],
+  })
+);
 
 // Contact route
 app.post("/api/contact", async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "All fields are required." });
+  }
+
+  const msg = {
+    to: process.env.MAIL_TO,
+    from: process.env.SENDGRID_VERIFIED_SENDER,
+    subject: `New message from ${name}`,
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+  };
+
   try {
-    const { name, email, message, topic } = req.body;
-
-    if (!name || !email || !message) {
-      return res.status(400).json({ message: "Missing required fields." });
-    }
-
-    // ✅ Use SendGrid transporter here
-    await sendgridTransporter.sendMail({
-      // IMPORTANT: Replace with the exact verified sender email from SendGrid
-      from: `"${name}" <${process.env.SENDGRID_VERIFIED_SENDER}>`, 
-      replyTo: email,
-      to: process.env.MAIL_TO,
-      subject: `Contact: ${topic || "General"} from ${name}`,
-      text: message,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Topic:</strong> ${topic || "General"}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    });
-
-    return res.status(200).json({ message: "Message sent successfully." });
-  } catch (err) {
-    console.error("Email error:", err); // ✅ log actual error
-    return res.status(500).json({ error: err.message || "Failed to send message." });
+    await sgMail.send(msg);
+    res.status(200).json({ message: "Email sent successfully." });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ error: "Failed to send email." });
   }
 });
-// ✅ Health check route for Render
-app.get("/", (req, res) => {
-  res.send("Backend is running on Render");
-});
 
+// Health check
+app.get("/", (req, res) => {
+  res.send("Server is running.");
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;
