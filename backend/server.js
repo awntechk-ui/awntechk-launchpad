@@ -7,20 +7,13 @@ const app = express();
 app.use(express.json()); // ✅ parse JSON body
 const cors = require("cors");
 
-// ✅ Updated CORS config
 app.use(cors({
   origin: [
-    "https://awntechk-launchpad.vercel.app",
-    "http://localhost:3000",
-    "http://localhost:5173"
+    "https://awntechk-launchpad.vercel.app"
   ],
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
+  methods: ["GET", "POST"],
   credentials: true
 }));
-
-// 🔥 Handle preflight OPTIONS requests
-app.options("*", cors());
 
 // ✅ Keep your Gmail transporter, but add SendGrid transporter as well
 // Configure transporter (SendGrid)
