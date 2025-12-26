@@ -9,13 +9,16 @@ const app = express();
 // Set SendGrid API Key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Middleware
+// Middleware to parse JSON
 app.use(express.json());
+
+// CORS middleware – updated
 app.use(
   cors({
     origin: [
-      "https://awntechk-launchpad.vercel.app", // frontend deployed
-      "http://localhost:5173", // local dev
+      "https://awntechk-launchpad.vercel.app", // your deployed frontend on Vercel
+      "https://www.awntechk.com",             // your main domain
+      "http://localhost:5173",                 // local dev
     ],
     methods: ["GET", "POST"],
   })
