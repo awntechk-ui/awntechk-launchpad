@@ -69,7 +69,7 @@ export default function ContactModal({
 
     try {
       setSubmitting(true);
-      const res = await fetch("https://awntechk-launchpad-backend.onrender.com", {
+      const res = await fetch("https://awntechk-launchpad-backend.onrender.com/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
