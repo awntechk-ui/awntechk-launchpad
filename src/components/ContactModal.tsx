@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react";
 type ContactModalProps = {
   open: boolean;
   onClose: () => void;
-  selectedTopic?: string; // ✅ added prop
+  selectedTopic?: string;
 };
 
 const topics = [
@@ -24,7 +24,10 @@ export default function ContactModal({
 }: ContactModalProps) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    msg: string;
+  } | null>(null);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -54,33 +57,68 @@ export default function ContactModal({
 
     // Basic validation
     if (!payload.name || !payload.email || !payload.message) {
-      setStatus({ type: "error", msg: "Name, Email, and Message are required." });
+      setStatus({
+        type: "error",
+        msg: "Name, Email, and Message are required.",
+      });
       return;
     }
+
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email);
     if (!emailOk) {
-      setStatus({ type: "error", msg: "Please enter a valid email address." });
+      setStatus({
+        type: "error",
+        msg: "Please enter a valid email address.",
+      });
       return;
     }
+
     if (payload.phone && !/^\+?[0-9\-()\s]{7,}$/.test(payload.phone)) {
-      setStatus({ type: "error", msg: "Please enter a valid phone number." });
+      setStatus({
+        type: "error",
+        msg: "Please enter a valid phone number.",
+      });
       return;
     }
 
     try {
       setSubmitting(true);
-      const res = await fetch("https://awntechk-launchpad-backend.onrender.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-});
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Failed to send message");
 
-      setStatus({ type: "success", msg: "Thanks! We’ll get back to you shortly." });
+      const res = await fetch(
+        "https://awntechk-launchpad-backend.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      // ✅ SAFE RESPONSE HANDLING
+      const text = await res.text();
+      let data: any;
+
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(
+          "Server is waking up. Please try again in 30 seconds."
+        );
+      }
+
+      if (!res.ok) {
+        throw new Error(data?.error || "Failed to send message");
+      }
+
+      setStatus({
+        type: "success",
+        msg: "Thanks! We’ll get back to you shortly.",
+      });
       form.reset();
     } catch (err: any) {
-      setStatus({ type: "error", msg: err.message || "Something went wrong." });
+      setStatus({
+        type: "error",
+        msg: err.message || "Something went wrong.",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -94,7 +132,9 @@ export default function ContactModal({
       onCancel={handleClose}
     >
       <form method="dialog" className="modal-close">
-        <button aria-label="Close" onClick={handleClose}>✕</button>
+        <button aria-label="Close" onClick={handleClose}>
+          ✕
+        </button>
       </form>
 
       <div className="modal-body">
@@ -110,7 +150,12 @@ export default function ContactModal({
 
             <label>
               <span>Email</span>
-              <input name="email" type="email" placeholder="you@example.com" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+              />
             </label>
 
             <label>
@@ -120,10 +165,11 @@ export default function ContactModal({
 
             <label>
               <span>Topic</span>
-              {/* ✅ use selectedTopic here */}
               <select name="topic" defaultValue={selectedTopic || topics[0]}>
                 {topics.map((t) => (
-                  <option key={t} value={t}>{t}</option>
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
                 ))}
               </select>
             </label>
@@ -164,9 +210,6 @@ export default function ContactModal({
           width: 640px;
           max-width: calc(100vw - 32px);
           background: linear-gradient(90deg, #20C6D7, #1BBFB0);
-
-
-
         }
         .modal-close {
           display: flex;
