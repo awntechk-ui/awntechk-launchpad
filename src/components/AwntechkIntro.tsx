@@ -14,7 +14,7 @@ const AwntechkIntro = ({ onOpenContact }) => {
           
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-8 leading-tight transition-colors duration-300">
             <span className="inline-block mt-2 relative">
-              <span className="relative z-10 bg-white dark:bg-black px-4"> Welcome to AwntechK</span>
+              <span className="relative z-10 bg-white dark:bg-black px-4"> Welcome to AwnTechK</span>
               <span className="absolute inset-0 bg-gray-900 dark:bg-white -z-10 transform -skew-x-12 transition-transform duration-300 hover:skew-x-6"></span>
             </span>
           </h1>
