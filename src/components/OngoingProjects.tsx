@@ -23,14 +23,14 @@ const OngoingProjects = ({ onOpenContact }) => {
   const projects = [
     {
       id: 1,
-      title: "NEAAA App",
-      description: "NEAAA App is a smart food-tech platform that connects users with nearby restaurants, highlighting trending dishes and real-time demand using data-driven insights.",
+      title: "Neaaa",
+      description: "Neaaa is a smart food-tech platform that connects users with nearby places.",
       icon: Smartphone
     },
     {
       id: 2,
-      title: "Trip Sync",
-      description: "Trip Sync is a travel planning platform that helps users collaboratively plan trips in real time.",
+      title: "TripSync",
+      description: "TripSync is a travel planning platform that helps users collaboratively plan trips in real time.",
       icon: Smartphone
     }
   ];

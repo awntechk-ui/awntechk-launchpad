@@ -95,10 +95,10 @@ const StrongSuite = ({ onOpenContact }) => {
   };
 
   const technologies = [
-    { name: "Awntechk", category: "Brand", logo: "/logo.png" },
+    { name: "React", category: "Frontend", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
     { name: "Node.js", category: "Backend", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
     { name: "Python", category: "Backend", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-    { name: "AWS", category: "Cloud", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" },
+    { name: "AWS", category: "Cloud", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
     { name: "Docker", category: "DevOps", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
     { name: "Kubernetes", category: "DevOps", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
     { name: "TensorFlow", category: "AI/ML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" },
@@ -112,8 +112,8 @@ const StrongSuite = ({ onOpenContact }) => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our <span className="relative inline-block">
-              <span className="relative z-10 text-gray-900">Strong Suite</span>
+            <span className="relative inline-block">
+              <span className="relative z-10 text-gray-900">Areas of Expertise</span>
               <span className="absolute inset-0 bg-blue-600 -z-10 transform -skew-x-12"></span>
             </span>
           </h2>
@@ -186,7 +186,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
         <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 mb-16 transition-colors duration-300">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Technology Stack</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Tech Infrastructure</h3>
             <p className="text-gray-600">Cutting-edge technologies that power our solutions</p>
           </div>
           
