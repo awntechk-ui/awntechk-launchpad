@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "luc
 
 const ExtraInformation = ({ onOpenContact }) => {
   return (
-    <footer id="contact" className="bg-[#214E5A] text-white py-12 px-6 scroll-mt-20">
+    <footer className="bg-[#214E5A] text-white py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-start justify-start text-left space-y-12">
           
@@ -33,7 +33,7 @@ const ExtraInformation = ({ onOpenContact }) => {
               <div className="flex items-center justify-start gap-3">
                 <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
-                  Mallakpet, Hyderabad, 500001.
+                  Bangalore, India
                 </span>
               </div>
             </div>

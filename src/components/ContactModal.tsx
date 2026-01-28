@@ -59,7 +59,10 @@ export default function ContactModal({
         msg: "Thanks! Our team will contact you shortly.",
       });
 
-      e.currentTarget.reset();
+      // Reset form safely
+      if (e.currentTarget) {
+        e.currentTarget.reset();
+      }
     } catch (err: any) {
       setStatus({
         type: "error",
