@@ -6,7 +6,7 @@ import ExtraInformation from "@/components/ExtraInformation";
 
 const Index = ({ onOpenContact }) => {   
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header onOpenContact={onOpenContact} />   
       <main>
         <AwntechkIntro onOpenContact={onOpenContact} />

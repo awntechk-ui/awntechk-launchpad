@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "luc
 
 const ExtraInformation = ({ onOpenContact }) => {
   return (
-    <footer className="bg-[#214E5A] text-white py-12 px-6">
+    <footer id="contact" className="bg-[#214E5A] text-white py-12 px-6 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-start justify-start text-left space-y-12">
           

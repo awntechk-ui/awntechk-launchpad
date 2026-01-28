@@ -8,8 +8,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ContactModal from "@/components/ContactModal"; 
 import HeroSection from "@/components/HeroSection";
-import { ThemeProvider } from "@/contexts/ThemeContext";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const queryClient = new QueryClient();
 
@@ -24,28 +22,24 @@ const App = () => {
   const closeContact = () => setContactOpen(false);
 
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index onOpenContact={openContact} />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index onOpenContact={openContact} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
 
-          <ContactModal
-            open={contactOpen}
-            onClose={closeContact}
-            selectedTopic={selectedTopic}
-          />
-          
-          <ThemeToggle />
-        </TooltipProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+        <ContactModal
+          open={contactOpen}
+          onClose={closeContact}
+          selectedTopic={selectedTopic}
+        />
+      </TooltipProvider>
+    </QueryClientProvider>
   );
 };
 
