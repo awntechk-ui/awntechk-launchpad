@@ -1,7 +1,6 @@
-// app/components/ContactModal.tsx
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ContactModalProps = {
   open: boolean;
@@ -22,7 +21,7 @@ export default function ContactModal({
   onClose,
   selectedTopic,
 }: ContactModalProps) {
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<{
     type: "success" | "error";
@@ -32,58 +31,18 @@ export default function ContactModal({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
-    if (!open && dialog.open) dialog.close();
+    open ? dialog.showModal() : dialog.close();
   }, [open]);
-
-  const handleClose = () => {
-    if (submitting) return;
-    onClose();
-  };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus(null);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const payload = {
-      name: String(formData.get("name") || "").trim(),
-      email: String(formData.get("email") || "").trim(),
-      phone: String(formData.get("phone") || "").trim(),
-      topic: String(formData.get("topic") || "").trim(),
-      message: String(formData.get("message") || "").trim(),
-    };
-
-    // Basic validation
-    if (!payload.name || !payload.email || !payload.message) {
-      setStatus({
-        type: "error",
-        msg: "Name, Email, and Message are required.",
-      });
-      return;
-    }
-
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email);
-    if (!emailOk) {
-      setStatus({
-        type: "error",
-        msg: "Please enter a valid email address.",
-      });
-      return;
-    }
-
-    if (payload.phone && !/^\+?[0-9\-()\s]{7,}$/.test(payload.phone)) {
-      setStatus({
-        type: "error",
-        msg: "Please enter a valid phone number.",
-      });
-      return;
-    }
+    const formData = new FormData(e.currentTarget);
+    const payload = Object.fromEntries(formData.entries());
 
     try {
       setSubmitting(true);
-
       const res = await fetch(
         "https://awntechk-launchpad-backend.onrender.com/api/contact",
         {
@@ -93,27 +52,14 @@ export default function ContactModal({
         }
       );
 
-      // ✅ SAFE RESPONSE HANDLING
-      const text = await res.text();
-      let data: any;
-
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error(
-          "Server is waking up. Please try again in 30 seconds."
-        );
-      }
-
-      if (!res.ok) {
-        throw new Error(data?.error || "Failed to send message");
-      }
+      if (!res.ok) throw new Error("Failed to send message");
 
       setStatus({
         type: "success",
-        msg: "Thanks! We’ll get back to you shortly.",
+        msg: "Thanks! Our team will contact you shortly.",
       });
-      form.reset();
+
+      e.currentTarget.reset();
     } catch (err: any) {
       setStatus({
         type: "error",
@@ -127,136 +73,194 @@ export default function ContactModal({
   return (
     <dialog
       ref={dialogRef}
-      className="contact-modal"
-      aria-labelledby="contact-title"
-      onCancel={handleClose}
+      className="contact-dialog"
+      onCancel={onClose}
     >
-      <form method="dialog" className="modal-close">
-        <button aria-label="Close" onClick={handleClose}>
-          ✕
-        </button>
-      </form>
+      <div className="modal-container">
+        {/* LEFT INFO PANEL */}
+        <aside className="modal-info">
+          <h2>Let’s build something great</h2>
+          <p>
+            Tell us about your idea and we'll help you design, build, and
+            scale it.
+          </p>
 
-      <div className="modal-body">
-        <h2 id="contact-title">Let’s talk</h2>
-        <p>Share your details and what you need. We’ll respond promptly.</p>
+          <ul>
+            <li>✔ Fast response within 24 hours</li>
+            <li>✔ Industry-grade solutions</li>
+            <li>✔ Dedicated technical team</li>
+          </ul>
+        </aside>
 
-        <form onSubmit={handleSubmit} className="form">
-          <div className="grid">
-            <label>
-              <span>Name</span>
-              <input name="name" type="text" placeholder="Your name" required />
-            </label>
+        {/* RIGHT FORM PANEL */}
+        <section className="modal-form">
+          <button className="close-btn" onClick={onClose}>✕</button>
 
-            <label>
-              <span>Email</span>
+          <form onSubmit={handleSubmit}>
+            <div className="grid">
+              <input name="name" placeholder="Your name" required />
               <input
                 name="email"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="Your email"
                 required
               />
-            </label>
-
-            <label>
-              <span>Phone</span>
-              <input name="phone" type="tel" placeholder="+91 90000 00000" />
-            </label>
-
-            <label>
-              <span>Topic</span>
+              <input name="phone" placeholder="+91 90000 00000" />
               <select name="topic" defaultValue={selectedTopic || topics[0]}>
                 {topics.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
+                  <option key={t}>{t}</option>
                 ))}
               </select>
-            </label>
-          </div>
+            </div>
 
-          <label className="full">
-            <span>Message</span>
             <textarea
               name="message"
+              placeholder="Briefly describe your requirements…"
               rows={5}
-              placeholder="Describe your problem or project…"
               required
             />
-          </label>
 
-          {status && (
-            <p className={status.type === "success" ? "ok" : "err"}>
-              {status.msg}
-            </p>
-          )}
+            {status && (
+              <p className={`status ${status.type}`}>
+                {status.msg}
+              </p>
+            )}
 
-          <div className="actions">
-            <button type="button" onClick={handleClose} disabled={submitting}>
-              Cancel
-            </button>
-            <button type="submit" disabled={submitting}>
+            <button className="submit-btn" disabled={submitting}>
               {submitting ? "Sending…" : "Send message"}
             </button>
-          </div>
-        </form>
+          </form>
+        </section>
       </div>
 
+      {/* STYLES */}
       <style>{`
-        dialog.contact-modal {
+        .contact-dialog {
           border: none;
-          border-radius: 16px;
-          padding: 0;
-          width: 640px;
-          max-width: calc(100vw - 32px);
-          background: linear-gradient(90deg, #20C6D7, #1BBFB0);
-        }
-        .modal-close {
-          display: flex;
-          justify-content: flex-end;
-          padding: 8px 12px;
-        }
-        .modal-close button {
           background: transparent;
+          padding: 0;
+        }
+
+        .contact-dialog::backdrop {
+          background: rgba(0,0,0,0.45);
+          backdrop-filter: blur(6px);
+        }
+
+        .modal-container {
+          display: grid;
+          grid-template-columns: 1fr 1.2fr;
+          width: 760px;
+          max-width: 95vw;
+          background: #fff;
+          border-radius: 18px;
+          overflow: hidden;
+          box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+          animation: fadeUp 0.25s ease;
+        }
+
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-info {
+          padding: 32px;
+          background: linear-gradient(135deg, #000000, #1a1a1a);
+          color: white;
+        }
+
+        .modal-info h2 {
+          font-size: 24px;
+          margin-bottom: 12px;
+        }
+
+        .modal-info ul {
+          margin-top: 20px;
+          padding-left: 0;
+          list-style: none;
+        }
+
+        .modal-info li {
+          margin-bottom: 10px;
+          opacity: 0.95;
+        }
+
+        .modal-form {
+          padding: 32px;
+          position: relative;
+        }
+
+        .close-btn {
+          position: absolute;
+          top: 14px;
+          right: 14px;
           border: none;
-          font-size: 20px;
+          background: none;
+          font-size: 18px;
           cursor: pointer;
         }
-        .modal-body {
-          padding: 20px 24px 24px;
+
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
         }
-        h2 {
-          margin: 0 0 6px;
-        }
+
         .grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 12px;
-          margin: 16px 0;
         }
-        label {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        label.full {
-          grid-column: 1 / -1;
-          margin-top: 8px;
-        }
+
         input, select, textarea {
-          border: 1px solid #e2e8f0;
+          padding: 12px 14px;
           border-radius: 10px;
-          padding: 10px 12px;
+          border: 2px solid #e5e7eb;
+          background: white;
           font-size: 14px;
         }
-        .actions {
-          display: flex;
-          justify-content: flex-end;
-          gap: 10px;
-          margin-top: 14px;
+
+        input:focus, select:focus, textarea:focus {
+          outline: none;
+          border-color: #000000;
+          box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
         }
-        .ok { color: #0f766e; }
-        .err { color: #dc2626; }
+
+        .submit-btn {
+          background: #000000;
+          color: white;
+          border: 2px solid #000000;
+          padding: 14px;
+          border-radius: 12px;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+          background: white;
+          color: #000000;
+        }
+
+        .status.success {
+          color: #16a34a;
+          font-size: 14px;
+        }
+
+        .status.error {
+          color: #dc2626;
+          font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+          .modal-container {
+            grid-template-columns: 1fr;
+          }
+          .modal-info {
+            display: none;
+          }
+        }
       `}</style>
     </dialog>
   );
