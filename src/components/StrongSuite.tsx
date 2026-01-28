@@ -186,7 +186,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
         <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 mb-16 transition-colors duration-300">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Tech Infrastructure</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">TECH Infrastructure</h3>
             <p className="text-gray-600">Cutting-edge technologies that power our solutions</p>
           </div>
           

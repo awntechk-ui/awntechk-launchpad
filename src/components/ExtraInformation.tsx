@@ -33,7 +33,7 @@ const ExtraInformation = ({ onOpenContact }) => {
               <div className="flex items-center justify-start gap-3">
                 <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
                 <span className="text-gray-300 text-sm">
-                  Bangalore, India
+                  Malakpet, Hyderabad - 500001
                 </span>
               </div>
             </div>
@@ -47,10 +47,10 @@ const ExtraInformation = ({ onOpenContact }) => {
               © 2026 AwntechK. All rights reserved.
             </div>
             <div className="flex gap-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
+              <a className="text-gray-400 hover:text-white transition-colors text-sm">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
+              <a className="text-gray-400 hover:text-white transition-colors text-sm">
                 Terms of Service
               </a>
             </div>
