@@ -108,41 +108,41 @@ const StrongSuite = ({ onOpenContact }) => {
   ];
 
   return (
-    <section id="services" className="py-12 px-4 sm:py-16 sm:px-6 lg:py-20 lg:px-8 bg-blue-100 transition-colors duration-300">
+    <section id="services" className="py-20 px-4 bg-blue-100 transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             <span className="relative inline-block">
               <span className="relative z-10 text-gray-900">Areas of Expertise</span>
               <span className="absolute inset-0 bg-blue-600 -z-10 transform -skew-x-12"></span>
             </span>
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Comprehensive technology solutions designed to accelerate your digital transformation 
             and drive sustainable growth.
           </p>
         </div>
 
-        {/* Auto-scrolling Slider - Responsive */}
-        <div className="relative mb-8 sm:mb-12 lg:mb-16">
+        {/* Auto-scrolling Slider */}
+        <div className="relative mb-16">
           <div className="overflow-hidden rounded-2xl">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {services.map((service, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-2 sm:px-4">
-                  <Card key={index} className="border-2 sm:border-4 border-gray-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 sm:hover:-translate-y-3 bg-white mx-auto max-w-md">
-                    <CardHeader className="text-center px-4 sm:px-6 py-4 sm:py-6">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-100 border-2 sm:border-4 border-gray-300 rounded-xl flex items-center justify-center mx-auto mb-4 sm:mb-6 hover:scale-110 transition-transform duration-300">
-                        <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />
+                <div key={index} className="w-full flex-shrink-0 px-4">
+                  <Card key={index} className="border-4 border-gray-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 bg-white">
+                    <CardHeader className="text-center">
+                      <div className="w-16 h-16 bg-gray-100 border-4 border-gray-300 rounded-xl flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300">
+                        <service.icon className="w-8 h-8 text-gray-900" />
                       </div>
-                      <CardTitle className="text-lg sm:text-xl lg:text-2xl text-gray-900 mb-2 sm:mb-4">{service.title}</CardTitle>
-                      <CardDescription className="text-sm sm:text-base lg:text-lg text-gray-600">
+                      <CardTitle className="text-2xl text-gray-900 mb-4">{service.title}</CardTitle>
+                      <CardDescription className="text-gray-600 text-lg">
                         {service.description}
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6">
+                    <CardContent>
                       {service.features}
                     </CardContent>
                   </Card>
@@ -151,15 +151,15 @@ const StrongSuite = ({ onOpenContact }) => {
             </div>
           </div>
           
-          {/* Navigation Dots - Responsive */}
-          <div className="flex justify-center gap-1 sm:gap-2 mt-4 sm:mt-6">
+          {/* Navigation Dots */}
+          <div className="flex justify-center gap-2 mt-6">
             {services.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentIndex === index 
-                    ? 'bg-gray-900 scale-110 sm:scale-125' 
+                    ? 'bg-gray-900 scale-125' 
                     : 'bg-gray-400 hover:bg-gray-600'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
@@ -167,39 +167,39 @@ const StrongSuite = ({ onOpenContact }) => {
             ))}
           </div>
           
-          {/* Navigation Arrows - Responsive */}
+          {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 w-8 h-8 sm:w-10 sm:h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
             aria-label="Previous slide"
           >
-            <span className="text-sm sm:text-base">❮</span>
+            ❮
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 w-8 h-8 sm:w-10 sm:h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg"
             aria-label="Next slide"
           >
-            <span className="text-sm sm:text-base">❯</span>
+            ❯
           </button>
         </div>
 
-        <div className="bg-white border border-gray-200 sm:border-2 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12 lg:mb-16 transition-colors duration-300">
-          <div className="text-center mb-6 sm:mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">TECH Infrastructure</h3>
-            <p className="text-sm sm:text-base text-gray-600">Cutting-edge technologies that power our solutions</p>
+        <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 mb-16 transition-colors duration-300">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">TECH Infrastructure</h3>
+            <p className="text-gray-600">Cutting-edge technologies that power our solutions</p>
           </div>
           
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 max-w-5xl mx-auto">
+          <div className="grid grid-cols-5 gap-3 max-w-5xl mx-auto !grid-cols-5">
             {technologies.map((tech, index) => (
               <div 
                 key={index}
-                className="bg-white border border-gray-300 sm:border-2 px-2 py-2 sm:px-2 sm:py-2 rounded-lg hover:border-gray-900 hover:shadow-lg transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center min-h-[60px] sm:min-h-[80px]"
+                className="bg-white border-2 border-gray-300 px-2 py-2 rounded-lg hover:border-gray-900 hover:shadow-lg transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center min-h-[80px]"
               >
                 <img 
                   src={tech.logo} 
                   alt={tech.name} 
-                  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
+                  className="w-8 h-8 md:w-10 md:h-10 object-contain"
                   onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                     const target = e.currentTarget;
                     target.style.display = 'none';
@@ -217,21 +217,20 @@ const StrongSuite = ({ onOpenContact }) => {
           </div>
         </div>
 
-        <div className="text-center bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-colors duration-300">
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+        <div className="text-center bg-white rounded-2xl p-8 transition-colors duration-300">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
             Ready to transform your business?
           </h3>
-          <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 px-4">
+          <p className="text-gray-600 mb-8">
             Let's discuss how our strong suite can help you achieve your goals
           </p>
           <Button 
             size="lg" 
-            className="bg-gray-900 text-white hover:bg-white hover:text-gray-900 border-2 border-gray-900 hover:border-gray-900 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            className="bg-gray-900 text-white hover:bg-white hover:text-gray-900 border-2 border-gray-900 hover:border-gray-900 px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             onClick={() => onOpenContact('consultation')}
           >
-            <span className="hidden sm:inline">Schedule a Consultation</span>
-            <span className="sm:hidden">Get Started</span>
-            <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+            Schedule a Consultation
+            <Rocket className="ml-2 w-5 h-5" />
           </Button>
         </div>
       </div>

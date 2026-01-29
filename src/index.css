@@ -252,3 +252,31 @@
     animation: sparkle 1.5s ease-in-out infinite;
   }
 }
+
+/* Desktop-first scaling for StrongSuite component */
+@media (max-width: 1024px) {
+  #services {
+    transform: scale(0.85);
+    transform-origin: top center;
+    margin-bottom: -10%;
+  }
+}
+
+@media (max-width: 768px) {
+  #services {
+    transform: scale(0.7);
+    margin-bottom: -20%;
+  }
+}
+
+@media (max-width: 480px) {
+  #services {
+    transform: scale(0.55);
+    margin-bottom: -30%;
+  }
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+}
