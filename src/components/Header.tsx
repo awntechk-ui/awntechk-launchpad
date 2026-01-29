@@ -15,8 +15,9 @@ const Header = ({ onOpenContact }) => {
   }, []);
 
   const navLinks = [
-    { label: "Services", href: "#services" },
+    
     { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
     { label: "Contact", href: "#contact" },
   ];
 

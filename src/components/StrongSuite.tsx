@@ -132,7 +132,7 @@ const StrongSuite = ({ onOpenContact }) => {
             >
               {services.map((service, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-4">
-                  <Card key={index} className="border-4 border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 bg-white">
+                  <Card key={index} className="border-4 border-gray-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 bg-white">
                     <CardHeader className="text-center">
                       <div className="w-16 h-16 bg-gray-100 border-4 border-gray-300 rounded-xl flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300">
                         <service.icon className="w-8 h-8 text-gray-900" />
