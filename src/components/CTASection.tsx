@@ -1,48 +1,48 @@
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const CTASection = ({ onOpenContact }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsLoaded(true), 100);
+  }, []);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="contact" className="py-24 lg:py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-primary opacity-95" />
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-      </div>
+    <section className="py-20 px-6 bg-gradient-to-b from-[#1A2233] via-gray-900 to-black relative">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-blue-900/10 to-gray-900/50" />
 
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 w-4 h-4 rounded-full bg-white/20 animate-pulse-soft" />
-      <div className="absolute top-20 right-20 w-3 h-3 rounded-full bg-white/30 animate-float" />
-      <div className="absolute bottom-20 left-1/4 w-2 h-2 rounded-full bg-white/25 animate-float-delayed" />
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className={`p-12 rounded-3xl bg-gradient-to-br from-[#0b1f3a] via-[#123a6f] to-[#0b1f3a] border border-blue-500/20 transition-all duration-700 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-4xl md:text-5xl mb-4">
+  <span className="font-display font-light tracking-[0.01em]">
+    You Ideate
+  </span>{' '}
+  &{' '}
+  <span className="font-display font-bold tracking-[0.01em]">
+    We Innovate.
+  </span>
+</h2>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-8">
-            <Sparkles className="w-4 h-4 text-white" />
-            <span className="text-sm font-medium text-white/90">
-              Ready to start your project?
-            </span>
-          </div>
-
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-            Have a project in mind?
-            <br />
-            Let's build something{" "}
-            <span className="relative">
-              meaningful
-              <span className="absolute bottom-1 left-0 right-0 h-3 bg-white/20 -z-10 rounded" />
-            </span>{" "}
-            together.
-          </h2>
-
-          <p className="text-lg text-white/80 mb-10 max-w-xl mx-auto">
-            Whether you're starting from scratch or scaling an existing product,
-            we're here to help you succeed.
+          <p className="text-gray-300 mb-8 font-body">
+            Let's discuss how we can bring your vision to life with our expertise.
           </p>
-
-          <Button variant="hero" onClick={() => onOpenContact("Partnership")}>
-              Let’s Talk
+          <Button 
+            size="lg"
+            onClick={onOpenContact}
+            className="bg-[#1A2233] text-white rounded-full font-semibold hover:bg-[#0f161f] transition-all duration-300 flex items-center justify-center gap-2 mx-auto group"
+          >
+            Let's Connect
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
@@ -51,3 +51,4 @@ const CTASection = ({ onOpenContact }) => {
 };
 
 export default CTASection;
+

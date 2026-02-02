@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Header = ({ onOpenContact }) => {
@@ -8,82 +7,97 @@ const Header = ({ onOpenContact }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      // Changed threshold slightly to 10px for a faster reaction
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    
-    { label: "About", href: "#about" },
+    { label: "About", href: "#" },
     { label: "Services", href: "#services" },
     { label: "Contact", href: "#contact" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-lg shadow-lg border-b-2 border-gray-200"
-          : "bg-white/80 backdrop-blur-md"
+          ? "bg-white/95 backdrop-blur-md border-gray-200 shadow-md py-3" // SCROLLED: Bright White, Shadow, Crisp Border
+          : "bg-transparent border-transparent py-6" // TOP: Transparent
       }`}
     >
-      <div className="mx-auto">
-        <nav className="flex items-center justify-between h-20 w-full px-6">
-          {/* Logo - Left Side */}
-          <div className="flex items-center -ml-10">
-            <img 
-              src="/logo.png" 
-              alt="Awntechk" 
-              className="w-96 h-96 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 object-contain"
-            />
+      <div className="container mx-auto px-6 md:px-12">
+        <nav className="flex items-center justify-between h-16">
+          
+          {/* LOGO: Reduced size (w-32 to w-40) */}
+          <div className="flex items-center -ml-4">
+             <img 
+               src="/logo.png" 
+               alt="Awntechk" 
+               className={`w-32 md:w-40 object-contain hover:scale-105 transition-all duration-300 ${
+                 isScrolled ? 'filter-none' : 'brightness-0 invert'
+               }`}
+             />
           </div>
 
-          {/* Desktop Navigation - Right Side */}
-          <div className="hidden md:flex items-center gap-8 ml-auto">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-10 ml-auto">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-600 hover:text-gray-900 font-medium transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full py-1"
+                className={`text-base font-medium transition-colors duration-300 relative group ${
+                  isScrolled 
+                    ? "text-gray-900 hover:text-blue-600" // SCROLLED: Dark text, Blue hover (matches Intro accents)
+                    : "text-white/90 hover:text-white"    // TOP: White text
+                }`}
+              >
+                {link.label}
+                {/* Underline Animation */}
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                  isScrolled ? "bg-blue-600" : "bg-white"
+                }`} />
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className={`md:hidden p-2 focus:outline-none transition-colors ${
+                isScrolled ? "text-gray-900" : "text-white"
+            }`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-8 h-8" />
+            ) : (
+              <Menu className="w-8 h-8" />
+            )}
+          </button>
+        </nav>
+
+        {/* Mobile Navigation Dropdown */}
+        <div 
+            className={`md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl transition-all duration-300 ease-in-out origin-top ${
+                isMobileMenuOpen ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible"
+            }`}
+        >
+          <div className="flex flex-col p-6 space-y-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-xl font-medium text-gray-600 hover:text-blue-600 transition-all duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
           </div>
-
-          {/* Right Side - Mobile Menu Button */}
-          <button
-            className="md:hidden p-3 rounded-lg border-2 border-gray-300 hover:border-gray-900 hover:bg-gray-100 transition-all duration-300 hover:scale-105"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-900" />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-900" />
-            )}
-          </button>
-        </nav>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-lg border-b-4 border-gray-200 shadow-xl">
-            <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-gray-600 hover:text-gray-900 font-medium py-3 px-4 rounded-lg hover:bg-gray-100 transition-all duration-300 border-l-4 border-transparent hover:border-gray-900"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </header>
   );

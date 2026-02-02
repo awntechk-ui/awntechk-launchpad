@@ -1,108 +1,60 @@
-import { Mail, MapPin, Phone, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import React from "react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-16 transition-colors duration-300 scroll-mt-20">
-      <div className="w-full px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-12 max-w-7xl mx-auto">
-          {/* Brand */}
-          <div>
-            <div className="mb-6">
+    <footer id="contact" className="bg-black text-white py-8 overflow-hidden relative">
+      
+      {/* Decorative Gradients */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-900 rounded-full blur-[128px] opacity-20 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-900 rounded-full blur-[128px] opacity-20 pointer-events-none" />
+      
+      <div className="mx-auto px-6 relative z-10 w-full">
+
+        {/* Main Footer Content - Centered Single Column */}
+        <div className="flex flex-col items-center text-center gap-8 mb-8 pb-6 border-b border-white/10 w-full">
+
+          {/* TOP SECTION: Logo + Description */}
+          <div className="flex flex-col items-center space-y-4 max-w-2xl">
+            <div className="flex items-center mb-2">
               <img 
                 src="/logo.png" 
-                alt="AwntechK Logo" 
-                className="h-12 w-auto object-contain hover:scale-105 transition-all duration-300"
+                alt="Awntechk" 
+                className="h-16 w-auto object-contain" 
               />
             </div>
-
-            <p className="text-gray-300 dark:text-gray-700 leading-relaxed mb-6 max-w-xs transition-colors duration-300">
-              Building practical, scalable digital solutions with strong engineering and thoughtful design.
+            
+            <p className="text-gray-400 text-sm leading-snug px-4">
+              Building practical, scalable digital solutions with strong engineering and thoughtful design. We turn complex problems into elegant software.
             </p>
+          </div>
 
-            {/* Social Media Icons */}
-            <div className="flex gap-3">
-              <div className="w-10 h-10 bg-gray-800 dark:bg-gray-200 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-900 hover:scale-110 transition-all duration-300 cursor-pointer group">
-                <Facebook className="w-5 h-5 text-white dark:text-gray-900 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
+          {/* BOTTOM SECTION: Contact Logos Only */}
+          <div className="flex items-center justify-center gap-6">
+            <a href="mailto:awntechk@gmail.com" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
+                <Mail className="w-4 h-4" />
               </div>
-              <div className="w-10 h-10 bg-gray-800 dark:bg-gray-200 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-900 hover:scale-110 transition-all duration-300 cursor-pointer group">
-                <Twitter className="w-5 h-5 text-white dark:text-gray-900 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
+            </a>
+            <a href="tel:+919346013341" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
+                <Phone className="w-4 h-4" />
               </div>
-              <div className="w-10 h-10 bg-gray-800 dark:bg-gray-200 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-900 hover:scale-110 transition-all duration-300 cursor-pointer group">
-                <Linkedin className="w-5 h-5 text-white dark:text-gray-900 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
-              </div>
-              <div className="w-10 h-10 bg-gray-800 dark:bg-gray-200 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-900 hover:scale-110 transition-all duration-300 cursor-pointer group">
-                <Instagram className="w-5 h-5 text-white dark:text-gray-900 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
+            </a>
+            <div className="flex items-center gap-2 text-gray-300">
+              <div className="p-2 bg-white/10 rounded-lg">
+                <MapPin className="w-4 h-4" />
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-bold text-lg mb-4 text-white dark:text-gray-900 transition-colors duration-300">Quick Links</h4>
-            <ul className="space-y-3">
-              {["Services", "About", "Careers", "Blog"].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-all duration-300 hover:translate-x-1 inline-block"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-bold text-lg mb-4 text-white dark:text-gray-900 transition-colors duration-300">Contact</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 group">
-                <Mail className="w-5 h-5 text-gray-400 dark:text-gray-600 mt-0.5 group-hover:text-white dark:group-hover:text-gray-900 transition-colors duration-300" />
-                <a
-                  href="mailto:hello@awntechk.com"
-                  className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-all duration-300 hover:translate-x-1 inline-block"
-                >
-                  hello@awntechk.com
-                </a>
-              </li>
-
-              <li className="flex items-start gap-3 group">
-                <Phone className="w-5 h-5 text-gray-400 dark:text-gray-600 mt-0.5 group-hover:text-white dark:group-hover:text-gray-900 transition-colors duration-300" />
-                <a
-                  href="tel:+15551234567"
-                  className="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-gray-900 transition-all duration-300 hover:translate-x-1 inline-block"
-                >
-                  +1 (555) 123-4567
-                </a>
-              </li>
-
-              <li className="flex items-start gap-3 group">
-                <MapPin className="w-5 h-5 text-gray-400 dark:text-gray-600 mt-0.5 group-hover:text-white dark:group-hover:text-gray-900 transition-colors duration-300" />
-                <span className="text-gray-300 dark:text-gray-700 transition-colors duration-300">
-                  123 Tech Street<br />
-                  San Francisco, CA
-                </span>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        {/* Bottom */}
-        <div className="pt-8 border-t-2 border-gray-700 dark:border-4 dark:border-white flex flex-col sm:flex-row justify-between items-center gap-4 transition-colors duration-300 max-w-7xl mx-auto">
-          <p className="text-gray-400 dark:text-gray-600 text-sm transition-colors duration-300">
-            © {currentYear} AwnTechK. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <a href="#privacy" className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-gray-900 text-sm transition-all duration-300 hover:translate-y-[-2px] inline-block">
-              Privacy Policy
-            </a>
-            <a href="#terms" className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-gray-900 text-sm transition-all duration-300 hover:translate-y-[-2px] inline-block">
-              Terms of Service
-            </a>
-          </div>
+        {/* Bottom Bar */}
+        <div className="flex flex-row justify-center items-center gap-4 text-xs text-gray-500">
+          <p>© {currentYear} Awntechk. All rights reserved.</p>
         </div>
       </div>
     </footer>

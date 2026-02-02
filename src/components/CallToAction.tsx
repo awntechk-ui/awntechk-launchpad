@@ -40,7 +40,7 @@ const CallToAction = ({ onOpenContact }) => {
 
         <Button 
           size="lg" 
-          className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900 border-2 border-white hover:border-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white dark:border-gray-900 dark:hover:border-gray-800 px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+          className="bg-blue-500 text-white hover:bg-blue-600 border-2 border-blue-500 hover:border-blue-600 px-8 py-4 text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
           onClick={() => onOpenContact('project-inquiry')}
         >
           Start Your Project

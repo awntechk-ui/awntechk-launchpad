@@ -168,7 +168,7 @@ export default function ContactModal({
 
         .modal-info {
           padding: 32px;
-          background: linear-gradient(135deg, #000000, #1a1a1a);
+          background: linear-gradient(135deg, #1A2233, #0f161f);
           color: white;
         }
 
@@ -191,6 +191,7 @@ export default function ContactModal({
         .modal-form {
           padding: 32px;
           position: relative;
+          background: linear-gradient(135deg, #0b1f3a, #123a6f, #0b1f3a);
         }
 
         .close-btn {
@@ -219,8 +220,9 @@ export default function ContactModal({
           padding: 12px 14px;
           border-radius: 10px;
           border: 2px solid #e5e7eb;
-          background: white;
+          background: rgba(255, 255, 255, 0.9);
           font-size: 14px;
+          color: #000;
         }
 
         input:focus, select:focus, textarea:focus {
@@ -230,9 +232,9 @@ export default function ContactModal({
         }
 
         .submit-btn {
-          background: #000000;
+          background: #1A2233;
           color: white;
-          border: 2px solid #000000;
+          border: 2px solid #1A2233;
           padding: 14px;
           border-radius: 12px;
           font-size: 15px;
@@ -242,8 +244,8 @@ export default function ContactModal({
         }
 
         .submit-btn:hover {
-          background: white;
-          color: #000000;
+          background: #0f161f;
+          color: white;
         }
 
         .status.success {
