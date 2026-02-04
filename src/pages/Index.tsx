@@ -25,4 +25,3 @@ const Index = ({ onOpenContact }: IndexProps) => {
 };
 
 export default Index;
-
