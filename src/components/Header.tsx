@@ -35,7 +35,7 @@ const Header = ({ onOpenContact }: HeaderProps) => {
       <div className="container mx-auto px-8">
         <nav className="flex items-center justify-between h-16">
           {/* LOGO: Reduced size (w-32 to w-40) */}
-          <div className="flex items-center -ml-4">
+          <div className="flex items-center">
             <img
               src="/logo.png"
               alt="Awntechk"
