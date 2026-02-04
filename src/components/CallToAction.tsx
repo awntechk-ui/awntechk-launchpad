@@ -8,7 +8,7 @@ const CallToAction = ({ onOpenContact }) => {
   return (
     <section className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-20 px-4 transition-colors duration-300">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8">
+        <h2 className="text-5xl font-bold mb-8">
           Ready to start your journey?
         </h2>
         
@@ -16,7 +16,7 @@ const CallToAction = ({ onOpenContact }) => {
           Building practical, scalable digital solutions with strong engineering and thoughtful design.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+        <div className="flex flex-row gap-6 justify-center items-center mb-12">
           <div className="flex items-center gap-3 group">
             <Mail className="w-5 h-5 text-gray-400 dark:text-gray-600 group-hover:text-white dark:group-hover:text-gray-900 transition-colors duration-300" />
             <a 

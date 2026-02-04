@@ -30,7 +30,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 lg:py-32 relative">
+    <section id="services" className="py-32 relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-subtle" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/3 rounded-full blur-3xl" />
@@ -41,7 +41,7 @@ const ServicesSection = () => {
           <span className="inline-block px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-4">
             Our Services
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-5xl font-bold text-foreground mb-6">
             What We <span className="text-gradient">Do</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -52,7 +52,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 gap-8">
           {services.map((service, index) => (
             <Card
               key={service.title}
@@ -64,7 +64,7 @@ const ServicesSection = () => {
                 <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center mb-4 shadow-custom-sm group-hover:shadow-custom-md transition-shadow duration-300">
                   <service.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
-                <CardTitle className="text-xl md:text-2xl group-hover:text-gradient transition-all duration-300">
+                <CardTitle className="text-2xl group-hover:text-gradient transition-all duration-300">
                   {service.title}
                 </CardTitle>
               </CardHeader>

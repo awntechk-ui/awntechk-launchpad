@@ -23,7 +23,7 @@ const StatsSection = ({ stats, accentColor = "blue" }: StatsSectionProps) => {
       background: "linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)" 
     }}>
       <div className="max-w-5xl mx-auto">
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-5 ${
+        <div className={`grid grid-cols-4 gap-5 ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`} style={{ transition: 'all 0.7s ease' }}>
           {stats.map((stat, index) => (

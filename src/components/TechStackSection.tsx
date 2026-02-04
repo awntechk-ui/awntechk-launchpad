@@ -40,7 +40,7 @@ const TechStackSection = ({
         <div className={`text-center mb-14 transition-all duration-700 transform ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-3">
+          <h2 className="font-display text-5xl font-bold mb-3">
             {title.split(' ').map((word, i) => {
               const keyWord = word.toLowerCase();
               const isHighlighted = keyWord.includes('tech') || keyWord.includes('modern');

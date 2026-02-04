@@ -32,7 +32,7 @@ const HowItWorks = ({ steps, accentColor = "blue", title = "How It Works" }: How
         <div className={`text-center mb-14 transition-all duration-700 transform ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-3">
+          <h2 className="font-display text-5xl font-bold mb-3">
             {title.split(' ').map((word, i) => (
               <span key={i} className={i === title.split(' ').length - 1 ? `gradient-text ${isTeal ? 'text-teal-400' : ''}` : ''}>
                 {word}{' '}
@@ -42,7 +42,7 @@ const HowItWorks = ({ steps, accentColor = "blue", title = "How It Works" }: How
           <div className={`w-16 h-1 mx-auto rounded-full ${bgClass}`} />
         </div>
 
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 transition-all duration-700 delay-200 transform ${
+        <div className={`grid grid-cols-4 gap-5 transition-all duration-700 delay-200 transform ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           {steps.map((item, index) => (

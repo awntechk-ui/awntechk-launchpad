@@ -16,7 +16,7 @@ const AwntechkIntro: React.FC = () => {
         </div>
 
         {/* heading */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white">
+        <h1 className="text-7xl font-extrabold leading-tight text-white">
           We Build Digital{" "}
           <span className="block">
             <span className="text-white/90">Future-Proof</span>{" "}
@@ -27,13 +27,13 @@ const AwntechkIntro: React.FC = () => {
         </h1>
 
         {/* description */}
-        <p className="mt-6 max-w-3xl mx-auto text-base md:text-lg text-white/70 leading-relaxed">
+        <p className="mt-6 max-w-3xl mx-auto text-lg text-white/70 leading-relaxed">
           We design and develop modern applications and AI-enabled solutions
           that transform complex ideas into reliable, scalable reality.
         </p>
 
         {/* buttons */}
-        <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-5">
+        <div className="mt-12 flex flex-row justify-center items-center gap-5">
           <button className="px-8 py-3.5 rounded-full bg-white text-[#0b1f3a] font-semibold shadow-lg hover:scale-[1.02] transition">
             Start Your Journey
           </button>

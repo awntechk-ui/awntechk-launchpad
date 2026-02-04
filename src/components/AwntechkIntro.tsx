@@ -15,7 +15,7 @@ const AwntechkIntro = ({ onOpenContact }) => {
           </div>
           
           {/* UPDATED: Text to White */}
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight transition-colors duration-300">
+          <h1 className="text-7xl font-bold text-white mb-8 leading-tight transition-colors duration-300">
             <span className="inline-block mt-2 relative">
               <span className="relative z-10 px-4"> Welcome to AwnTechK</span>
               <span className="absolute inset-0 bg-blue-500/20 -z-10 transform -skew-x-12 transition-transform duration-300 hover:skew-x-6"></span>
@@ -27,7 +27,7 @@ const AwntechkIntro = ({ onOpenContact }) => {
             We design and develop modern applications and AI-enabled solutions that help ideas grow into reliable, real-world products.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-row gap-6 justify-center items-center">
             <Button 
               variant="outline" 
               size="lg"

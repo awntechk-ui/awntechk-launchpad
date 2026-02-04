@@ -290,7 +290,7 @@
   /* Allow horizontal scrolling on mobile for desktop layout preservation */
 }
 
-/* Mobile scaling - maintain desktop layout perfectly scaled */
+/* Mobile scaling - exact desktop layout preservation */
 @media (max-width: 1023px) {
   html, body {
     overflow-x: hidden;
@@ -302,21 +302,21 @@
     padding: 0;
   }
   
-  /* Scale the entire viewport to fit mobile screens */
+  /* Force exact desktop scaling on mobile */
   body {
-    zoom: 0.85;
-    -moz-transform: scale(0.85);
+    zoom: 0.6;
+    -moz-transform: scale(0.6);
     -moz-transform-origin: top left;
-    -o-transform: scale(0.85);
+    -o-transform: scale(0.6);
     -o-transform-origin: top left;
-    -webkit-transform: scale(0.85);
+    -webkit-transform: scale(0.6);
     -webkit-transform-origin: top left;
-    transform: scale(0.85);
+    transform: scale(0.6);
     transform-origin: top left;
-    width: 117.65vw; /* 100vw / 0.85 to compensate for scaling */
+    width: 166.67vw; /* 100vw / 0.6 to compensate for scaling */
   }
   
-  /* Ensure all containers fit within scaled viewport */
+  /* Ensure all containers maintain desktop layout */
   .max-w-7xl,
   .max-w-4xl,
   .max-w-3xl,
@@ -328,14 +328,14 @@
     width: 100%;
   }
   
-  /* Remove any fixed widths that could cause overflow */
+  /* Force all sections to maintain desktop width */
   section {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
   }
   
-  /* Ensure grids wrap properly but maintain structure */
+  /* Preserve desktop grid layouts exactly */
   .grid-cols-2 {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 1rem;
@@ -351,7 +351,7 @@
     max-width: 100%;
   }
   
-  /* Ensure no extra bottom spacing */
+  /* Ensure no extra spacing */
   * {
     box-sizing: border-box;
   }
@@ -359,6 +359,47 @@
   html, body {
     height: auto;
     min-height: 100vh;
+  }
+  
+  /* Force all text to wrap properly without breaking layout */
+  p, h1, h2, h3, h4, h5, h6, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Prevent horizontal overflow from all elements */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Force exact desktop behavior */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  /* Ensure header maintains desktop layout */
+  header {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Fix navigation spacing */
+  nav {
+    width: 100% !important;
+  }
+  
+  /* Ensure images scale properly */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Prevent any element from causing horizontal scroll */
+  *:not(body):not(html) {
+    position: relative;
   }
 }
 

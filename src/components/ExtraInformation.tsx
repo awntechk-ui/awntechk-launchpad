@@ -42,8 +42,8 @@ const ExtraInformation = ({ onOpenContact }) => {
 
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-gray-600">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
+          <div className="flex flex-row justify-between items-center">
+            <div className="text-gray-400 text-sm mb-0">
               © 2026 AwntechK. All rights reserved.
             </div>
             <div className="flex gap-6">
