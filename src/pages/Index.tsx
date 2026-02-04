@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 
 const Index = ({ onOpenContact }) => {   
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white min-w-[1400px]">
       <Header onOpenContact={onOpenContact} />   
       <main>
         <HeroSection onOpenContact={onOpenContact} />

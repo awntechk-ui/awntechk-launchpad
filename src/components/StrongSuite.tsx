@@ -272,7 +272,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
     {/* Areas of Expertise Section */}
 
-    <section id="services" className="py-20 px-6 bg-gray-900 relative">
+    <section id="services" className="py-20 px-6 bg-gray-900 relative min-w-[1400px]">
 
       {/* Background gradients */}
 
@@ -298,7 +298,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
         {/* Two-Column Layout */}
 
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 transition-all duration-700 delay-200 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`grid grid-cols-2 gap-12 mb-16 transition-all duration-700 delay-200 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
           {/* LEFT COLUMN: Sub-titles with Icons */}
 
@@ -418,7 +418,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
     {/* Tech Infrastructure Section */}
 
-    <section id="tech-infrastructure" className="py-20 px-6 bg-gradient-to-br from-[#0b1f3a] via-[#123a6f] to-[#0b1f3a] relative">
+    <section id="tech-infrastructure" className="py-20 px-6 bg-gradient-to-br from-[#0b1f3a] via-[#123a6f] to-[#0b1f3a] relative min-w-[1400px]">
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
 
@@ -428,10 +428,8 @@ const StrongSuite = ({ onOpenContact }) => {
 
         <div className={`text-center mb-12 transition-all duration-700 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-
+          <h2 className="font-display text-6xl font-bold mb-4">
             <span className="gradient-text">Tech</span> Infrastructure
-
           </h2>
 
           <p className="text-gray-400 text-lg">Cutting-edge technologies that power our solutions</p>
