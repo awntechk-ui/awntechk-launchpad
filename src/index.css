@@ -348,6 +348,20 @@
     max-width: 100vw !important;
   }
   
+  /* Fix the 5-column grid in StrongSuite that causes overflow */
+  @media (max-width: 1023px) {
+    .grid[style*="grid-template-columns: repeat(5, 1fr)"] {
+      max-width: 100vw !important;
+      overflow-x: hidden !important;
+      min-width: 0 !important;
+    }
+    
+    .grid[style*="grid-template-columns: repeat(5, 1fr)"] > div {
+      min-width: 0 !important;
+      flex-shrink: 1 !important;
+    }
+  }
+  
   /* Ensure text wraps properly on mobile */
   p, h1, h2, h3, h4, h5, h6, span, div {
     word-wrap: break-word;
