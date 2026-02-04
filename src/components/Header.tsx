@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
-const Header = ({ onOpenContact }) => {
+interface HeaderProps {
+  onOpenContact: () => void;
+}
+
+const Header = ({ onOpenContact }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,30 +32,29 @@ const Header = ({ onOpenContact }) => {
           : "bg-transparent border-transparent py-6" // TOP: Transparent
       }`}
     >
-      <div className="container mx-auto px-12 min-w-[1400px]">
+      <div className="container mx-auto px-8">
         <nav className="flex items-center justify-between h-16">
-          
           {/* LOGO: Reduced size (w-32 to w-40) */}
           <div className="flex items-center -ml-4">
-             <img 
-               src="/logo.png" 
-               alt="Awntechk" 
-               className={`w-40 object-contain hover:scale-105 transition-all duration-300 ${
-                 isScrolled ? 'filter-none' : 'brightness-0 invert'
-               }`}
-             />
+            <img
+              src="/logo.png"
+              alt="Awntechk"
+              className={`w-40 object-contain hover:scale-105 transition-all duration-300 ${
+                isScrolled ? 'filter-none' : 'brightness-0 invert'
+              }`}
+            />
           </div>
 
-          {/* Navigation */}
+          {/* Navigation - Desktop */}
           <div className="flex items-center gap-10 ml-auto">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 className={`text-base font-medium transition-colors duration-300 relative group ${
-                  isScrolled 
+                  isScrolled
                     ? "text-gray-900 hover:text-blue-600" // SCROLLED: Dark text, Blue hover (matches Intro accents)
-                    : "text-white/90 hover:text-white"    // TOP: White text
+                    : "text-white/90 hover:text-white" // TOP: White text
                 }`}
               >
                 {link.label}
@@ -60,7 +65,15 @@ const Header = ({ onOpenContact }) => {
               </a>
             ))}
           </div>
+
+          {/* Mobile Menu Button - Hidden for proportional scaling */}
+          <div className="hidden">
+          </div>
         </nav>
+
+        {/* Mobile Menu - Hidden for proportional scaling */}
+        <div className="hidden">
+        </div>
       </div>
     </header>
   );

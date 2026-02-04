@@ -293,26 +293,58 @@
   }
 }
 
-/* Desktop-first scaling for StrongSuite component */
+/* Desktop-first proportional scaling */
 @media (max-width: 1024px) {
-  #services {
+  html {
+    font-size: clamp(12px, 2vw, 16px);
+  }
+  
+  body {
+    zoom: 0.85;
+    -moz-transform: scale(0.85);
+    -moz-transform-origin: top center;
+    -o-transform: scale(0.85);
+    -o-transform-origin: top center;
+    -webkit-transform: scale(0.85);
+    -webkit-transform-origin: top center;
     transform: scale(0.85);
     transform-origin: top center;
-    margin-bottom: -10%;
   }
 }
 
 @media (max-width: 768px) {
-  #services {
+  html {
+    font-size: clamp(10px, 2.5vw, 14px);
+  }
+  
+  body {
+    zoom: 0.7;
+    -moz-transform: scale(0.7);
+    -moz-transform-origin: top center;
+    -o-transform: scale(0.7);
+    -o-transform-origin: top center;
+    -webkit-transform: scale(0.7);
+    -webkit-transform-origin: top center;
     transform: scale(0.7);
-    margin-bottom: -20%;
+    transform-origin: top center;
   }
 }
 
 @media (max-width: 480px) {
-  #services {
+  html {
+    font-size: clamp(8px, 3vw, 12px);
+  }
+  
+  body {
+    zoom: 0.55;
+    -moz-transform: scale(0.55);
+    -moz-transform-origin: top center;
+    -o-transform: scale(0.55);
+    -o-transform-origin: top center;
+    -webkit-transform: scale(0.55);
+    -webkit-transform-origin: top center;
     transform: scale(0.55);
-    margin-bottom: -30%;
+    transform-origin: top center;
   }
 }
 

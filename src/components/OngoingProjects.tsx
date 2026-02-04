@@ -12,7 +12,11 @@ import {
   Utensils,
 } from "lucide-react";
 
-const OngoingProjects = ({ onOpenContact }) => {
+interface OngoingProjectsProps {
+  onOpenContact: () => void;
+}
+
+const OngoingProjects = ({ onOpenContact }: OngoingProjectsProps) => {
   const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -76,14 +80,14 @@ const OngoingProjects = ({ onOpenContact }) => {
   const isTeal = (accent) => accent === "teal";
 
   return (
-    <section id="projects" className="py-20 px-6 bg-black relative">
+    <section id="projects" className="py-20 px-8 bg-black relative">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/30 to-black" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className={`text-center mb-12 transition-all duration-700 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="font-display text-5xl font-bold mb-4">
             Ongoing <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-gray-400 font-body max-w-2xl mx-auto">
@@ -92,7 +96,7 @@ const OngoingProjects = ({ onOpenContact }) => {
         </div>
 
         {/* Projects Grid */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 transition-all duration-700 delay-200 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`grid grid-cols-2 gap-8 transition-all duration-700 delay-200 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {projects.map((project, index) => (
             <div 
               key={project.id} 

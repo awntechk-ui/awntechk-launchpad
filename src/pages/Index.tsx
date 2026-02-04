@@ -5,9 +5,13 @@ import OngoingProjects from "@/components/OngoingProjects";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 
-const Index = ({ onOpenContact }) => {   
+interface IndexProps {
+  onOpenContact: () => void;
+}
+
+const Index = ({ onOpenContact }: IndexProps) => {   
   return (
-    <div className="min-h-screen bg-black text-white min-w-[1400px]">
+    <div className="min-h-screen bg-black text-white">
       <Header onOpenContact={onOpenContact} />   
       <main>
         <HeroSection onOpenContact={onOpenContact} />

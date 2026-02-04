@@ -4,9 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 import { ArrowRight, Code2, Brain, Database, Smartphone } from "lucide-react";
 
+interface StrongSuiteProps {
+  onOpenContact: () => void;
+}
 
-
-const StrongSuite = ({ onOpenContact }) => {
+const StrongSuite = ({ onOpenContact }: StrongSuiteProps) => {
 
   const [selectedService, setSelectedService] = useState(0);
 
@@ -272,7 +274,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
     {/* Areas of Expertise Section */}
 
-    <section id="services" className="py-20 px-6 bg-gray-900 relative min-w-[1400px]">
+    <section id="services" className="py-20 px-8 bg-gray-900 relative">
 
       {/* Background gradients */}
 
@@ -286,7 +288,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
         <div className={`text-center mb-12 transition-all duration-700 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="font-display text-6xl font-bold mb-4">
 
             Areas of <span className="text-gradient">Expertise</span>
 
@@ -418,7 +420,7 @@ const StrongSuite = ({ onOpenContact }) => {
 
     {/* Tech Infrastructure Section */}
 
-    <section id="tech-infrastructure" className="py-20 px-6 bg-gradient-to-br from-[#0b1f3a] via-[#123a6f] to-[#0b1f3a] relative min-w-[1400px]">
+    <section id="tech-infrastructure" className="py-20 px-8 bg-gradient-to-br from-[#0b1f3a] via-[#123a6f] to-[#0b1f3a] relative">
 
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
 

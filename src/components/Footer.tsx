@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-900 rounded-full blur-[128px] opacity-20 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-900 rounded-full blur-[128px] opacity-20 pointer-events-none" />
       
-      <div className="mx-auto px-6 relative z-10 w-full">
+      <div className="mx-auto px-8 relative z-10 w-full">
 
         {/* Main Footer Content - Centered Single Column */}
         <div className="flex flex-col items-center text-center gap-8 mb-8 pb-6 border-b border-white/10 w-full">
@@ -26,7 +26,7 @@ const Footer = () => {
               />
             </div>
             
-            <p className="text-gray-400 text-sm leading-snug px-4">
+            <p className="text-gray-400 text-sm leading-snug px-0">
               Building practical, scalable digital solutions with strong engineering and thoughtful design. We turn complex problems into elegant software.
             </p>
           </div>
