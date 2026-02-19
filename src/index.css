@@ -290,135 +290,91 @@
   /* Allow horizontal scrolling on mobile for desktop layout preservation */
 }
 
-/* Mobile Responsive Design - Standard Vertical Scrolling */
+/* Mobile Responsive Design - Full laptop-like experience */
 @media (max-width: 1023px) {
   html, body {
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: auto; /* Allow horizontal scrolling to see all content */
     overflow-y: auto; /* Allow normal vertical scrolling */
     width: 100%;
-    max-width: 100vw;
+    max-width: none; /* Remove max-width restrictions */
   }
   
-  /* Responsive typography that maintains readability */
-  h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
-  h2 { font-size: clamp(1.25rem, 3vw, 2rem); }
-  h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
-  h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
-  h5 { font-size: clamp(0.875rem, 1.5vw, 1.125rem); }
-  h6 { font-size: clamp(0.75rem, 1.25vw, 1rem); }
-  p, span, div { font-size: clamp(0.875rem, 2vw, 1rem); }
-  
-  /* Container adjustments */
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 100%;
-    max-width: 100%;
+  /* Scale down but ensure all content is visible */
+  body {
+    zoom: 0.8; /* Moderate scaling to fit content */
+    -moz-transform: scale(0.8);
+    -moz-transform-origin: top left;
+    -o-transform: scale(0.8);
+    -o-transform-origin: top left;
+    -webkit-transform: scale(0.8);
+    -webkit-transform-origin: top left;
+    transform: scale(0.8);
+    transform-origin: top left;
+    width: 125%; /* 1 / 0.8 to compensate for scaling */
+    max-width: none; /* Ensure no content is cut off */
+    min-height: 100vh; /* Full height for proper scrolling */
   }
   
-  /* Section adjustments - ensure full height sections */
-  section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 100%;
-    max-width: 100%;
-    min-height: auto; /* Remove fixed heights */
+  /* Ensure all containers can extend fully */
+  .container, section, .max-w-7xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl, .max-w-lg {
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
   }
   
-  /* Grid adjustments - make responsive but maintain structure */
-  .grid-cols-2 {
-    grid-template-columns: 1fr; /* Stack on mobile */
-    gap: 1rem;
-  }
-  
-  .grid-cols-3 {
-    grid-template-columns: 1fr; /* Stack on mobile */
-    gap: 1rem;
-  }
-  
-  .grid-cols-4 {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-    gap: 1rem;
-  }
-  
+  /* Ensure grids maintain exact desktop layout */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
   .grid-cols-5 {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-    gap: 0.75rem;
+    grid-template-columns: inherit; /* Keep desktop grid exactly */
   }
   
-  /* Hero section adjustments */
-  .h-screen {
-    min-height: 100vh; /* Keep full screen height for hero */
+  /* Ensure text is readable and not cut off */
+  p, h1, h2, h3, h4, h5, h6, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: visible; /* Ensure text is not hidden */
   }
   
-  /* Image responsiveness */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Button and link adjustments */
-  button, a {
-    font-size: clamp(0.875rem, 2vw, 1rem);
-    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+  /* Ensure images and media are fully visible */
+  img, video, iframe {
+    max-width: none !important;
+    width: auto !important;
+    height: auto !important;
   }
 }
 
 /* Tablet Responsive Design */
 @media (min-width: 768px) and (max-width: 1023px) {
-  /* Tablet-specific styles */
-  .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  
-  /* Adjust grids for tablet */
-  .grid-cols-5 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .grid-cols-4 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .grid-cols-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
+  body {
+    zoom: 0.9;
+    -moz-transform: scale(0.9);
+    -moz-transform-origin: top left;
+    -o-transform: scale(0.9);
+    -o-transform-origin: top left;
+    -webkit-transform: scale(0.9);
+    -webkit-transform-origin: top left;
+    transform: scale(0.9);
+    transform-origin: top left;
+    width: 111%; /* 1 / 0.9 */
+    max-width: none;
   }
 }
 
 /* Small Mobile */
 @media (max-width: 767px) {
-  /* Small mobile adjustments */
-  .grid-cols-5 {
-    grid-template-columns: 1fr; /* Single column on small mobile */
-  }
-  
-  .grid-cols-4 {
-    grid-template-columns: 1fr; /* Single column on small mobile */
-  }
-  
-  .grid-cols-3 {
-    grid-template-columns: 1fr; /* Single column on small mobile */
-  }
-  
-  .grid-cols-2 {
-    grid-template-columns: 1fr; /* Single column on small mobile */
-  }
-  
-  /* Adjust spacing for small mobile */
-  section {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  
-  .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+  body {
+    zoom: 0.6;
+    -moz-transform: scale(0.6);
+    -moz-transform-origin: top left;
+    -o-transform: scale(0.6);
+    -o-transform-origin: top left;
+    -webkit-transform: scale(0.6);
+    -webkit-transform-origin: top left;
+    transform: scale(0.6);
+    transform-origin: top left;
+    width: 167%; /* 1 / 0.6 */
+    max-width: none;
   }
 }
-
-
