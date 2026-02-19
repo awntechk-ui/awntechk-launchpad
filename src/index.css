@@ -290,115 +290,126 @@
   /* Allow horizontal scrolling on mobile for desktop layout preservation */
 }
 
-/* Mobile Responsive Design - Maintain Desktop Layout */
+/* Mobile scaling - exact desktop layout preservation */
 @media (max-width: 1023px) {
   html, body {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
+    overflow-x: auto; /* Allow horizontal scrolling to see all content */
+    overflow-y: auto;
+    width: 100vw;
+    min-width: 0;
+    max-width: none; /* Remove max-width to allow content to extend */
+    margin: 0;
+    padding: 0;
   }
   
-  /* Responsive typography that maintains readability */
-  h1 { font-size: clamp(2rem, 5vw, 4rem); }
-  h2 { font-size: clamp(1.5rem, 4vw, 3rem); }
-  h3 { font-size: clamp(1.25rem, 3vw, 2rem); }
-  h4 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
-  h5 { font-size: clamp(1rem, 2vw, 1.25rem); }
-  h6 { font-size: clamp(0.875rem, 1.5vw, 1.125rem); }
-  p, span, div { font-size: clamp(0.875rem, 2vw, 1rem); }
-  
-  /* Container adjustments */
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  /* Force exact desktop scaling on mobile without viewport expansion */
+  body {
+    zoom: 0.5;
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: top left;
+    -o-transform: scale(0.5);
+    -o-transform-origin: top left;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: top left;
+    transform: scale(0.5);
+    transform-origin: top left;
+    width: 200%; /* Adjust width to compensate for scaling */
+    max-width: none; /* Remove max-width to allow content to extend */
+    min-height: 100vh; /* Ensure full height */
   }
   
-  /* Grid adjustments - maintain desktop layout structure */
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  /* Ensure all containers can extend beyond viewport */
+  .max-w-7xl,
+  .max-w-4xl,
+  .max-w-3xl,
+  .max-w-2xl,
+  .max-w-xl,
+  .max-w-lg {
+    max-width: none !important; /* Allow content to exceed viewport */
+    width: auto !important;
   }
   
-  .grid-cols-3 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-  
-  .grid-cols-4 {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  
-  .grid-cols-5 {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-  
-  /* Section padding adjustments */
+  /* Force all sections to extend beyond viewport if needed */
   section {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    max-width: none !important; /* Allow content to exceed viewport */
+    min-width: auto;
   }
   
-  /* Image responsiveness */
-  img {
-    max-width: 100%;
-    height: auto;
+  /* Fix absolute positioned elements to not be constrained */
+  .absolute {
+    max-width: none !important; /* Allow content to exceed viewport */
   }
   
-  /* Button and link adjustments */
-  button, a {
-    font-size: clamp(0.875rem, 2vw, 1rem);
-    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+  /* Fix large width elements to not be constrained */
+  [class*="w-96"], [class*="w-[1000px"] {
+    max-width: none !important; /* Allow content to exceed viewport */
+  }
+  
+  /* Ensure grids maintain desktop layout */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
+  .grid-cols-5 {
+    grid-template-columns: inherit; /* Keep desktop grid layout */
+  }
+  
+  /* Ensure text wraps properly on mobile */
+  p, h1, h2, h3, h4, h5, h6, span, div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 
-/* Tablet Responsive Design */
+/* Tablet scaling - maintain desktop layout */
 @media (min-width: 768px) and (max-width: 1023px) {
-  /* Tablet-specific styles */
-  .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  
-  /* Adjust grids for tablet */
-  .grid-cols-5 {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  .grid-cols-4 {
-    grid-template-columns: repeat(3, 1fr);
+  body {
+    zoom: 0.7;
+    -moz-transform: scale(0.7);
+    -moz-transform-origin: top left;
+    -o-transform: scale(0.7);
+    -o-transform-origin: top left;
+    -webkit-transform: scale(0.7);
+    -webkit-transform-origin: top left;
+    transform: scale(0.7);
+    transform-origin: top left;
+    width: 143%; /* 1 / 0.7 */
+    max-width: none;
   }
 }
 
-/* Small Mobile */
+/* Small mobile scaling */
 @media (max-width: 767px) {
-  /* Small mobile adjustments */
-  .grid-cols-5 {
-    grid-template-columns: repeat(2, 1fr);
+  body {
+    zoom: 0.4;
+    -moz-transform: scale(0.4);
+    -moz-transform-origin: top left;
+    -o-transform: scale(0.4);
+    -o-transform-origin: top left;
+    -webkit-transform: scale(0.4);
+    -webkit-transform-origin: top left;
+    transform: scale(0.4);
+    transform-origin: top left;
+    width: 250%; /* 1 / 0.4 */
+    max-width: none;
+  }
+}
+
+/* Desktop-first proportional scaling - only apply to larger tablets */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  html {
+    font-size: clamp(12px, 2vw, 16px);
   }
   
-  .grid-cols-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .grid-cols-3 {
-    grid-template-columns: 1fr;
-  }
-  
-  .grid-cols-2 {
-    grid-template-columns: 1fr;
-  }
-  
-  /* Adjust spacing for small mobile */
-  section {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  
-  .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+  body {
+    zoom: 0.95;
+    -moz-transform: scale(0.95);
+    -moz-transform-origin: top center;
+    -o-transform: scale(0.95);
+    -o-transform-origin: top center;
+    -webkit-transform: scale(0.95);
+    -webkit-transform-origin: top center;
+    transform: scale(0.95);
+    transform-origin: top center;
   }
 }
 
