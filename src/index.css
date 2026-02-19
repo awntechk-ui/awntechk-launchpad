@@ -290,126 +290,134 @@
   /* Allow horizontal scrolling on mobile for desktop layout preservation */
 }
 
-/* Mobile scaling - exact desktop layout preservation */
+/* Mobile Responsive Design - Standard Vertical Scrolling */
 @media (max-width: 1023px) {
   html, body {
-    overflow-x: auto; /* Allow horizontal scrolling to see all content */
-    overflow-y: auto;
-    width: 100vw;
-    min-width: 0;
-    max-width: none; /* Remove max-width to allow content to extend */
-    margin: 0;
-    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow normal vertical scrolling */
+    width: 100%;
+    max-width: 100vw;
   }
   
-  /* Force exact desktop scaling on mobile without viewport expansion */
-  body {
-    zoom: 0.5;
-    -moz-transform: scale(0.5);
-    -moz-transform-origin: top left;
-    -o-transform: scale(0.5);
-    -o-transform-origin: top left;
-    -webkit-transform: scale(0.5);
-    -webkit-transform-origin: top left;
-    transform: scale(0.5);
-    transform-origin: top left;
-    width: 200%; /* Adjust width to compensate for scaling */
-    max-width: none; /* Remove max-width to allow content to extend */
-    min-height: 100vh; /* Ensure full height */
+  /* Responsive typography that maintains readability */
+  h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+  h2 { font-size: clamp(1.25rem, 3vw, 2rem); }
+  h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+  h4 { font-size: clamp(1rem, 2vw, 1.25rem); }
+  h5 { font-size: clamp(0.875rem, 1.5vw, 1.125rem); }
+  h6 { font-size: clamp(0.75rem, 1.25vw, 1rem); }
+  p, span, div { font-size: clamp(0.875rem, 2vw, 1rem); }
+  
+  /* Container adjustments */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    max-width: 100%;
   }
   
-  /* Ensure all containers can extend beyond viewport */
-  .max-w-7xl,
-  .max-w-4xl,
-  .max-w-3xl,
-  .max-w-2xl,
-  .max-w-xl,
-  .max-w-lg {
-    max-width: none !important; /* Allow content to exceed viewport */
-    width: auto !important;
-  }
-  
-  /* Force all sections to extend beyond viewport if needed */
+  /* Section adjustments - ensure full height sections */
   section {
-    max-width: none !important; /* Allow content to exceed viewport */
-    min-width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto; /* Remove fixed heights */
   }
   
-  /* Fix absolute positioned elements to not be constrained */
-  .absolute {
-    max-width: none !important; /* Allow content to exceed viewport */
+  /* Grid adjustments - make responsive but maintain structure */
+  .grid-cols-2 {
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 1rem;
   }
   
-  /* Fix large width elements to not be constrained */
-  [class*="w-96"], [class*="w-[1000px"] {
-    max-width: none !important; /* Allow content to exceed viewport */
+  .grid-cols-3 {
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 1rem;
   }
   
-  /* Ensure grids maintain desktop layout */
-  .grid-cols-2,
-  .grid-cols-3,
-  .grid-cols-4,
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 1rem;
+  }
+  
   .grid-cols-5 {
-    grid-template-columns: inherit; /* Keep desktop grid layout */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 0.75rem;
   }
   
-  /* Ensure text wraps properly on mobile */
-  p, h1, h2, h3, h4, h5, h6, span, div {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+  /* Hero section adjustments */
+  .h-screen {
+    min-height: 100vh; /* Keep full screen height for hero */
+  }
+  
+  /* Image responsiveness */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Button and link adjustments */
+  button, a {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
   }
 }
 
-/* Tablet scaling - maintain desktop layout */
+/* Tablet Responsive Design */
 @media (min-width: 768px) and (max-width: 1023px) {
-  body {
-    zoom: 0.7;
-    -moz-transform: scale(0.7);
-    -moz-transform-origin: top left;
-    -o-transform: scale(0.7);
-    -o-transform-origin: top left;
-    -webkit-transform: scale(0.7);
-    -webkit-transform-origin: top left;
-    transform: scale(0.7);
-    transform-origin: top left;
-    width: 143%; /* 1 / 0.7 */
-    max-width: none;
-  }
-}
-
-/* Small mobile scaling */
-@media (max-width: 767px) {
-  body {
-    zoom: 0.4;
-    -moz-transform: scale(0.4);
-    -moz-transform-origin: top left;
-    -o-transform: scale(0.4);
-    -o-transform-origin: top left;
-    -webkit-transform: scale(0.4);
-    -webkit-transform-origin: top left;
-    transform: scale(0.4);
-    transform-origin: top left;
-    width: 250%; /* 1 / 0.4 */
-    max-width: none;
-  }
-}
-
-/* Desktop-first proportional scaling - only apply to larger tablets */
-@media (min-width: 1024px) and (max-width: 1280px) {
-  html {
-    font-size: clamp(12px, 2vw, 16px);
+  /* Tablet-specific styles */
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
   
-  body {
-    zoom: 0.95;
-    -moz-transform: scale(0.95);
-    -moz-transform-origin: top center;
-    -o-transform: scale(0.95);
-    -o-transform-origin: top center;
-    -webkit-transform: scale(0.95);
-    -webkit-transform-origin: top center;
-    transform: scale(0.95);
-    transform-origin: top center;
+  /* Adjust grids for tablet */
+  .grid-cols-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 767px) {
+  /* Small mobile adjustments */
+  .grid-cols-5 {
+    grid-template-columns: 1fr; /* Single column on small mobile */
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: 1fr; /* Single column on small mobile */
+  }
+  
+  .grid-cols-3 {
+    grid-template-columns: 1fr; /* Single column on small mobile */
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: 1fr; /* Single column on small mobile */
+  }
+  
+  /* Adjust spacing for small mobile */
+  section {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
