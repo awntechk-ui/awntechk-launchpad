@@ -290,51 +290,51 @@
   /* Allow horizontal scrolling on mobile for desktop layout preservation */
 }
 
-/* Mobile Responsive Design - Full laptop-like experience */
+/* Mobile Responsive Design - Exact Desktop Layout Scaling */
 @media (max-width: 1023px) {
   html, body {
     overflow-x: auto; /* Allow horizontal scrolling to see all content */
     overflow-y: auto; /* Allow normal vertical scrolling */
-    width: 100%;
-    max-width: none; /* Remove max-width restrictions */
+    width: 100vw;
+    min-width: 320px; /* Minimum mobile width */
   }
   
-  /* Scale down but ensure all content is visible */
+  /* Scale down entire desktop layout for mobile */
   body {
-    zoom: 0.8; /* Moderate scaling to fit content */
-    -moz-transform: scale(0.8);
+    zoom: 0.65; /* Optimal scaling factor */
+    -moz-transform: scale(0.65);
     -moz-transform-origin: top left;
-    -o-transform: scale(0.8);
+    -o-transform: scale(0.65);
     -o-transform-origin: top left;
-    -webkit-transform: scale(0.8);
+    -webkit-transform: scale(0.65);
     -webkit-transform-origin: top left;
-    transform: scale(0.8);
+    transform: scale(0.65);
     transform-origin: top left;
-    width: 125%; /* 1 / 0.8 to compensate for scaling */
-    max-width: none; /* Ensure no content is cut off */
-    min-height: 100vh; /* Full height for proper scrolling */
+    width: 154%; /* 1 / 0.65 to compensate for scaling */
+    max-width: none; /* Remove max-width restrictions */
+    min-height: 100vh; /* Ensure full height */
   }
   
-  /* Ensure all containers can extend fully */
+  /* Ensure all containers maintain desktop layout */
   .container, section, .max-w-7xl, .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-xl, .max-w-lg {
     width: auto !important;
     max-width: none !important;
     min-width: 0 !important;
   }
   
-  /* Ensure grids maintain exact desktop layout */
+  /* Ensure grids maintain exact desktop structure */
   .grid-cols-2,
   .grid-cols-3,
   .grid-cols-4,
   .grid-cols-5 {
-    grid-template-columns: inherit; /* Keep desktop grid exactly */
+    grid-template-columns: inherit !important; /* Keep desktop grid exactly */
   }
   
-  /* Ensure text is readable and not cut off */
+  /* Ensure all text and content is visible */
   p, h1, h2, h3, h4, h5, h6, span, div {
     word-wrap: break-word;
     overflow-wrap: break-word;
-    overflow: visible; /* Ensure text is not hidden */
+    overflow: visible;
   }
   
   /* Ensure images and media are fully visible */
@@ -348,16 +348,16 @@
 /* Tablet Responsive Design */
 @media (min-width: 768px) and (max-width: 1023px) {
   body {
-    zoom: 0.9;
-    -moz-transform: scale(0.9);
+    zoom: 0.75; /* Slightly larger scale for tablets */
+    -moz-transform: scale(0.75);
     -moz-transform-origin: top left;
-    -o-transform: scale(0.9);
+    -o-transform: scale(0.75);
     -o-transform-origin: top left;
-    -webkit-transform: scale(0.9);
+    -webkit-transform: scale(0.75);
     -webkit-transform-origin: top left;
-    transform: scale(0.9);
+    transform: scale(0.75);
     transform-origin: top left;
-    width: 111%; /* 1 / 0.9 */
+    width: 133%; /* 1 / 0.75 */
     max-width: none;
   }
 }
@@ -365,16 +365,16 @@
 /* Small Mobile */
 @media (max-width: 767px) {
   body {
-    zoom: 0.6;
-    -moz-transform: scale(0.6);
+    zoom: 0.5; /* Smaller scale for phones */
+    -moz-transform: scale(0.5);
     -moz-transform-origin: top left;
-    -o-transform: scale(0.6);
+    -o-transform: scale(0.5);
     -o-transform-origin: top left;
-    -webkit-transform: scale(0.6);
+    -webkit-transform: scale(0.5);
     -webkit-transform-origin: top left;
-    transform: scale(0.6);
+    transform: scale(0.5);
     transform-origin: top left;
-    width: 167%; /* 1 / 0.6 */
+    width: 200%; /* 1 / 0.5 */
     max-width: none;
   }
 }
