@@ -330,6 +330,27 @@
     grid-template-columns: inherit !important; /* Keep desktop grid exactly */
   }
   
+  /* Fix image sizing in Areas of Expertise section */
+  .grid.grid-cols-2 img[alt*="Custom Software Development"],
+  .grid.grid-cols-2 img[alt*="AI & Machine Learning"],
+  .grid.grid-cols-2 img[alt*="Data Engineering"],
+  .grid.grid-cols-2 img[alt*="Mobile Development"] {
+    width: 100% !important;
+    max-width: 400px !important;
+    height: auto !important;
+    max-height: 200px !important;
+    object-fit: cover !important;
+  }
+  
+  /* Fix tech icon sizing in Tech Infrastructure section */
+  .grid[style*="repeat(5, 1fr)"] img {
+    width: 32px !important;
+    height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    object-fit: contain !important;
+  }
+  
   /* Ensure all text and content is visible */
   p, h1, h2, h3, h4, h5, h6, span, div {
     word-wrap: break-word;
@@ -360,6 +381,22 @@
     width: 133%; /* 1 / 0.75 */
     max-width: none;
   }
+  
+  /* Tablet image sizing */
+  .grid.grid-cols-2 img[alt*="Custom Software Development"],
+  .grid.grid-cols-2 img[alt*="AI & Machine Learning"],
+  .grid.grid-cols-2 img[alt*="Data Engineering"],
+  .grid.grid-cols-2 img[alt*="Mobile Development"] {
+    max-width: 500px !important;
+    max-height: 250px !important;
+  }
+  
+  .grid[style*="repeat(5, 1fr)"] img {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+  }
 }
 
 /* Small Mobile */
@@ -376,5 +413,21 @@
     transform-origin: top left;
     width: 200%; /* 1 / 0.5 */
     max-width: none;
+  }
+  
+  /* Small mobile image sizing */
+  .grid.grid-cols-2 img[alt*="Custom Software Development"],
+  .grid.grid-cols-2 img[alt*="AI & Machine Learning"],
+  .grid.grid-cols-2 img[alt*="Data Engineering"],
+  .grid.grid-cols-2 img[alt*="Mobile Development"] {
+    max-width: 300px !important;
+    max-height: 150px !important;
+  }
+  
+  .grid[style*="repeat(5, 1fr)"] img {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
   }
 }
