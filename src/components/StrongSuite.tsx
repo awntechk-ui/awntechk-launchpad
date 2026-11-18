@@ -440,7 +440,7 @@ const StrongSuite = ({ onOpenContact }: StrongSuiteProps) => {
 
 
 
-        <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 transition-all duration-700 delay-300 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`grid gap-4 transition-all duration-700 delay-300 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}>
           {technologies.map((tech, index) => (
             <div key={index} className="p-4 rounded-xl card-gradient flex flex-col items-center">
               <div className="text-3xl mb-2">

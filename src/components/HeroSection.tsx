@@ -1,31 +1,43 @@
-import { ArrowDown } from "lucide-react";
-import ContactForm from "./ContactForm";
+import React from "react";
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onOpenContact: () => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact }) => {
   return (
-    <section id="about" className="enquiry-hero" aria-labelledby="hero-heading">
-      <div className="enquiry-shell enquiry-hero-inner">
-        <div className="enquiry-hero-copy">
-          <p className="enquiry-eyebrow">Innovation Meets Excellence</p>
-          <h1 id="hero-heading">
-            We Build Digital<br />
-            Future-Proof<br />
-            <span>Products.</span>
-          </h1>
-          <p className="enquiry-hero-description">
-            We design and develop modern applications and AI-enabled solutions
-            that transform complex ideas into reliable, scalable reality.
-          </p>
-          <a href="#services" className="enquiry-services-link">
-            Explore our services <ArrowDown size={17} aria-hidden="true" />
-          </a>
+    <section className="relative w-full h-screen bg-gradient-to-br from-[#0b1f3a] via-[#123a6f] to-[#0b1f3a] overflow-hidden flex items-center justify-center">
+      {/* subtle background texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
+
+      <div className="relative max-w-7xl mx-auto px-8 text-center">
+        {/* badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm text-white/90 backdrop-blur">
+          <span>⚡</span>
+          <span className="font-medium tracking-wide">
+            Innovation Meets Excellence
+          </span>
         </div>
-        <section id="hero-form" className="enquiry-card" aria-labelledby="enquiry-heading">
-          <h2 id="enquiry-heading">Let’s build something great</h2>
-          <p>Tell us about your idea and we'll help you design, build, and scale it.</p>
-          <ContactForm />
-        </section>
+
+        {/* heading */}
+        <h1 className="text-7xl font-extrabold leading-tight text-white">
+          We Build Digital{" "}
+          <span className="block">
+            <span className="text-white/90">Future-Proof</span>{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#9fe8d7] to-[#63d4ff]">
+              Products.
+            </span>
+          </span>
+        </h1>
+
+        {/* description */}
+        <p className="mt-6 max-w-3xl mx-auto text-lg text-white/70 leading-relaxed px-4">
+          We design and develop modern applications and AI-enabled solutions
+          that transform complex ideas into reliable, scalable reality.
+        </p>
       </div>
     </section>
   );
-}
+};
+
+export default HeroSection;
