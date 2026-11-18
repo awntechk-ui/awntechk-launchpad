@@ -13,7 +13,7 @@ export default function Header() {
           <a href="#process">Process</a>
           <a href="#projects">Products</a>
         </nav>
-        <a className="enquiry-button enquiry-header-cta" href="#contact">
+        <a className="enquiry-button enquiry-header-cta" href="#hero-form">
           Contact <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </div>

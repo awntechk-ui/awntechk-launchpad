@@ -31,7 +31,7 @@ export default function Footer() {
             <ul>
               <li><a href="mailto:awntechk@gmail.com"><Mail size={16} aria-hidden="true" /> awntechk@gmail.com</a></li>
               <li><a href="tel:+919346013341"><Phone size={16} aria-hidden="true" /> +91 93460 13341</a></li>
-              <li><a href="#contact">Send an enquiry <ArrowUpRight size={16} aria-hidden="true" /></a></li>
+              <li><a href="#hero-form">Send an enquiry <ArrowUpRight size={16} aria-hidden="true" /></a></li>
             </ul>
           </div>
         </div>

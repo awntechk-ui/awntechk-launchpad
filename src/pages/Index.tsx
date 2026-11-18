@@ -1,5 +1,4 @@
 import { ArrowDown, ArrowUpRight, Code2, Database, Smartphone, Sparkles } from "lucide-react";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
@@ -108,7 +107,7 @@ export default function Index() {
             </ol>
             <div className="landing-process-cta">
               <p>Let's discuss how we can bring your vision to life with our expertise.</p>
-              <a className="enquiry-button" href="#contact">Let’s connect <ArrowUpRight size={17} aria-hidden="true" /></a>
+              <a className="enquiry-button" href="#hero-form">Let’s connect <ArrowUpRight size={17} aria-hidden="true" /></a>
             </div>
           </div>
         </section>
@@ -139,10 +138,9 @@ export default function Index() {
               <h2 id="contact-heading">Let’s build something great.</h2>
               <p className="landing-contact-description">Tell us about your idea and we'll help you design, build, and scale it.</p>
             </div>
-            <div className="enquiry-card">
-              <h3>Send us an enquiry</h3>
-              <ContactForm />
-            </div>
+            <a className="enquiry-button landing-contact-action" href="#hero-form">
+              Send an enquiry <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
           </div>
         </section>
       </main>

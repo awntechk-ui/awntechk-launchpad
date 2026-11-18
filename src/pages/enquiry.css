@@ -358,6 +358,7 @@ body:has(.enquiry-home) { overflow-x: clip; }
 }
 
 .landing-contact .landing-contact-description { max-width: 30rem; margin-top: 22px; font-size: 1.125rem; }
+.landing-contact-action { justify-self: start; }
 
 .landing-footer { background: #071624; color: #c0cfdb; border-top: 1px solid #304456; font-size: .9rem; }
 
