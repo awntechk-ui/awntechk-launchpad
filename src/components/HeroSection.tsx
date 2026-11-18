@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm";
 
 export default function HeroSection() {
   return (
-    <section id="about" className="enquiry-hero" aria-labelledby="hero-heading">
+    <section className="enquiry-hero" aria-labelledby="hero-heading">
       <div className="enquiry-shell enquiry-hero-inner">
         <div className="enquiry-hero-copy">
           <p className="enquiry-eyebrow">Innovation Meets Excellence</p>

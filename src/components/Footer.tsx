@@ -1,64 +1,45 @@
-import React from "react";
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { ArrowUpRight, Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer() {
   return (
-    <footer id="contact" className="bg-black text-white py-8 overflow-hidden relative">
-      
-      {/* Decorative Gradients */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-900 rounded-full blur-[128px] opacity-20 pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-900 rounded-full blur-[128px] opacity-20 pointer-events-none" />
-      
-      <div className="mx-auto px-8 relative z-10 w-full">
-
-        {/* Main Footer Content - Centered Single Column */}
-        <div className="flex flex-col items-center text-center gap-8 mb-8 pb-6 border-b border-white/10 w-full">
-
-          {/* TOP SECTION: Logo + Description */}
-          <div className="flex flex-col items-center space-y-4 max-w-2xl">
-            <div className="flex items-center mb-2">
-              <img 
-                src="/logo.png" 
-                alt="Awntechk" 
-                className="h-16 w-auto object-contain" 
-              />
-            </div>
-            
-            <p className="text-gray-400 text-sm leading-snug px-0">
-              Building practical, scalable digital solutions with strong engineering and thoughtful design. We turn complex problems into elegant software.
-            </p>
+    <footer className="landing-footer">
+      <div className="enquiry-shell">
+        <div className="landing-footer-grid">
+          <div className="landing-footer-brand">
+            <a href="#home" aria-label="AwnTechK home"><img src="/logo.png" alt="AwnTechK" width="152" className="enquiry-logo" /></a>
+            <p>Building practical, scalable digital solutions with strong engineering and thoughtful design.</p>
           </div>
-
-          {/* BOTTOM SECTION: Contact Logos Only */}
-          <div className="flex items-center justify-center gap-6">
-            <a href="mailto:awntechk@gmail.com" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
-              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
-                <Mail className="w-4 h-4" />
-              </div>
-            </a>
-            <a href="tel:+919346013341" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
-              <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
-                <Phone className="w-4 h-4" />
-              </div>
-            </a>
-            <div className="flex items-center gap-2 text-gray-300">
-              <div className="p-2 bg-white/10 rounded-lg">
-                <MapPin className="w-4 h-4" />
-              </div>
-            </div>
+          <nav aria-label="Explore AwnTechK">
+            <h2>Explore</h2>
+            <ul>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#process">How we work</a></li>
+              <li><a href="#expertise">Our expertise</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Product pages">
+            <h2>Products</h2>
+            <ul>
+              <li><Link to="/tripsync">TripSync</Link></li>
+              <li><Link to="/neaaa">Neaaa</Link></li>
+            </ul>
+          </nav>
+          <div>
+            <h2>Get in touch</h2>
+            <ul>
+              <li><a href="mailto:awntechk@gmail.com"><Mail size={16} aria-hidden="true" /> awntechk@gmail.com</a></li>
+              <li><a href="tel:+919346013341"><Phone size={16} aria-hidden="true" /> +91 93460 13341</a></li>
+              <li><a href="#contact">Send an enquiry <ArrowUpRight size={16} aria-hidden="true" /></a></li>
+            </ul>
           </div>
-
         </div>
-
-        {/* Bottom Bar */}
-        <div className="flex flex-row justify-center items-center gap-4 text-xs text-gray-500">
-          <p>© {currentYear} Awntechk. All rights reserved.</p>
+        <div className="landing-footer-bottom">
+          <p>© {new Date().getFullYear()} AwnTechK. All rights reserved.</p>
+          <a href="#home">Back to top ↑</a>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
