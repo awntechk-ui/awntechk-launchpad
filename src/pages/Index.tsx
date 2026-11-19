@@ -1,4 +1,6 @@
 import { ArrowDown, ArrowUpRight, Code2, Database, Smartphone, Sparkles } from "lucide-react";
+import { useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
@@ -53,6 +55,14 @@ const expertise = [
 ];
 
 export default function Index() {
+  const { hash } = useLocation();
+
+  useLayoutEffect(() => {
+    if (hash === "#projects") {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "instant" });
+    }
+  }, [hash]);
+
   return (
     <div className="enquiry-home" id="home">
       <Header />

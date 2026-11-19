@@ -1,22 +1,6 @@
-import { ArrowUpRight, MapPin, Utensils } from "lucide-react";
+import { ArrowUpRight, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const products = [
-  {
-    name: "TripSync",
-    path: "/tripsync",
-    status: "In development",
-    icon: MapPin,
-    description: "TripSync is a travel planning platform that helps users collaboratively plan trips in real time.",
-  },
-  {
-    name: "Neaaa",
-    path: "/neaaa",
-    status: "In planning",
-    icon: Utensils,
-    description: "Neaaa is a smart food-tech platform that connects users with nearby places.",
-  },
-];
+import { products } from "@/lib/products";
 
 export default function OngoingProjects() {
   return (
@@ -26,15 +10,20 @@ export default function OngoingProjects() {
           <h2 id="products-heading">Our products</h2>
         </div>
         <div className="landing-product-grid">
-          {products.map(({ name, path, status, icon: Icon, description }) => (
-            <article key={name} className="landing-product">
-              <div className="landing-product-top">
+          {products.map(({ slug, name, icon: Icon, description }) => (
+            <article key={slug} className="landing-product flex flex-col items-start">
+              <div className="landing-product-top w-full">
                 <Icon size={25} aria-hidden="true" />
-                <span>{status}</span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-emerald-900">
+                  <Rocket size={14} aria-hidden="true" />
+                  Launched
+                </span>
               </div>
               <h3>{name}</h3>
-              <p>{description}</p>
-              <Link className="landing-text-link" to={path}>Explore {name} <ArrowUpRight size={17} aria-hidden="true" /></Link>
+              <p className="flex-1">{description}</p>
+              <Link className="landing-text-link" to={`/products/${slug}`}>
+                Explore {name} <ArrowUpRight size={17} aria-hidden="true" />
+              </Link>
             </article>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import { products } from "@/lib/products";
 
 export default function Footer() {
   return (
@@ -22,8 +23,9 @@ export default function Footer() {
           <nav aria-label="Product pages">
             <h2>Products</h2>
             <ul>
-              <li><Link to="/tripsync">TripSync</Link></li>
-              <li><Link to="/neaaa">Neaaa</Link></li>
+              {products.map(({ slug, name }) => (
+                <li key={slug}><Link to={`/products/${slug}`}>{name}</Link></li>
+              ))}
             </ul>
           </nav>
           <div>

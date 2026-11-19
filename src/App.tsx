@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import TripSync from "./pages/TripSync";
 import Neaaa from "./pages/Neaaa";
 import NotFound from "./pages/NotFound";
+import ProductAbout from "./pages/ProductAbout";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/" element={<Index />} />
             <Route path="/tripsync" element={<TripSync />} />
             <Route path="/neaaa" element={<Neaaa />} />
+            <Route path="/products/:slug" element={<ProductAbout />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
