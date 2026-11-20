@@ -21,7 +21,7 @@ export default function OngoingProjects() {
               </div>
               <h3>{name}</h3>
               <p className="flex-1">{description}</p>
-              <Link className="landing-text-link" to={`/products/${slug}`}>
+              <Link className="landing-text-link min-h-11" to={`/products/${slug}`}>
                 Explore {name} <ArrowUpRight size={17} aria-hidden="true" />
               </Link>
             </article>
